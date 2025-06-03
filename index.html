@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ConsentManager -->
+    <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/5406eba592030.js" data-cmp-host="d.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="0"></script>
+
+    <title>Dominion Voice AI - AI Voice Agent für Arztpraxen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            z-index: -2;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 191, 255, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #00bfff, transparent);
+            border-radius: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 400;
+        }
+
+        .nav-menu a:hover {
+            color: #00bfff;
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            /* background: #000000; */
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #00bfff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(0, 191, 255, 0.3)); }
+            to { filter: drop-shadow(0 0 30px rgba(0, 191, 255, 0.6)); }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00bfff, #0099cc);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #33ccff, #00bfff);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 191, 255, 0.7);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #00bfff;
+            border: 2px solid #00bfff;
+        }
+
+        .btn-secondary:hover {
+            background: #00bfff;
+            color: #000000;
+            transform: translateY(-3px);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.5);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            position: relative;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #00bfff;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(0, 191, 255, 0.1);
+            border-color: #00bfff;
+            box-shadow: 0 10px 30px rgba(0, 191, 255, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #00bfff;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Feature Banners */
+        .feature-banners-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-banner-item {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            flex: 1;
+            min-width: 280px;
+            max-width: 45%; /* Um zwei Elemente pro Reihe auf größeren Bildschirmen zu ermöglichen */
+            border: 1px solid rgba(0, 191, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .feature-banner-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 191, 255, 0.6);
+        }
+
+        .feature-banner-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-banner-item p {
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .feature-banner-item {
+                max-width: 100%; /* Volle Breite auf Mobilgeräten */
+            }
+        }
+
+        /* Benefits Section */
+        .benefits {
+            margin: 3rem 0;
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 191, 255, 0.1);
+        }
+
+        .benefit-item:hover {
+            background: rgba(0, 191, 255, 0.1);
+            transform: translateX(10px);
+            border-color: rgba(0, 191, 255, 0.3);
+        }
+
+        .benefit-icon {
+            font-size: 1.5rem;
+            color: #00bfff;
+            min-width: 30px;
+        }
+
+        /* Demo Section */
+        .demo {
+            text-align: center;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            position: relative;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+        }
+
+        .demo-placeholder {
+            background: rgba(0, 191, 255, 0.1);
+            border: 2px dashed #00bfff;
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem 0;
+        }
+
+        .demo-placeholder i {
+            font-size: 3rem;
+            color: #00bfff;
+            margin-bottom: 1rem;
+        }
+
+        /* Audio Demo Section */
+        .audio-player-container {
+            margin-top: 2rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+        }
+
+        .audio-player-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.6);
+        }
+
+        .audio-player-container audio {
+            width: 100%;
+            max-width: 100%;
+            filter: drop-shadow(0 0 5px rgba(0, 191, 255, 0.5));
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #00bfff;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(0, 191, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00bfff;
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 191, 255, 0.3);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #00bfff;
+        }
+
+        /* Numbers Section Styles */
+        .numbers-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .numbers-grid {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .number-item {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #00bfff;
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+            padding: 1rem;
+        }
+        /* Privacy Consent Link */
+        .form-group #privacy-consent + label a {
+            color: #00bfff; 
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <nav class="nav-container">
+                <a href="#" class="logo">Dominion Voice AI</a>
+                <ul class="nav-menu">
+                    <li><a href="#start">Home</a></li>
+                    <li><a href="#vorteile">Vorteile</a></li>
+                    <li><a href="#funktionen">Funktionen</a></li>
+                    <li><a href="#demo">Demo</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="start" class="hero">
+            <div class="hero-content">
+                <h1>Individuelle AI Voice Agent Lösungen</h1>
+                <p>Ki Telefonassistenten für ihr Unternehmen</p>
+                <div class="cta-buttons">
+                    <a href="#demo" class="btn btn-primary">Demo starten</a>
+                    <a href="#kontakt" class="btn btn-secondary">Kontakt aufnehmen</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section id="vorteile" class="section">
+            <h2 class="fade-in">Vorteile von Dominion Voice AI</h2>
+            <h3 class="fade-in" style="text-align: center; color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">100% Erreichbarkeit – keine verpassten Anrufe mehr</h3>
+            <p class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto; color: rgba(255, 255, 255, 0.7);">Dein Voice Agent nimmt garantiert jeden Anruf an – rund um die Uhr, auch außerhalb der Öffnungszeiten. Nie wieder entgangene Anrufe oder verpasste Aufträge.</p>
+
+            <h3 class="fade-in" style="text-align: center; color: rgba(255, 255, 255, 0.8); margin-top: 3rem; margin-bottom: 2rem;">Entlastung für ihr Team</h3>
+            <p class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto; color: rgba(255, 255, 255, 0.7);">Angestellte oder Mitarbeitende werden sofort spürbar entlastet. Der Voice Agent übernimmt alle Gespräche, damit sich dein Team auf die wirklich wichtigen Aufgaben konzentrieren kann.</p>
+
+            <h3 class="fade-in" style="text-align: center; color: rgba(255, 255, 255, 0.8); margin-top: 3rem; margin-bottom: 2rem;">Mehr Effizienz = mehr Umsatz</h3>
+            <p class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto; color: rgba(255, 255, 255, 0.7);">Durch automatisierte Prozesse wird dein Betrieb planbarer, strukturierter und wirtschaftlicher. Kein Zeitverlust durch Warteschleifen oder Rückrufe.</p>
+
+            <h3 class="fade-in" style="text-align: center; color: rgba(255, 255, 255, 0.8); margin-top: 3rem; margin-bottom: 2rem;">DSGVO-konform & sicher</h3>
+            <p class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto; color: rgba(255, 255, 255, 0.7);">Alle Daten werden vertraulich behandelt, verschlüsselt übertragen und konform mit den Datenschutzvorgaben gespeichert.</p>
+        </section>
+
+        <!-- Numbers Section -->
+        <section class="section numbers-section">
+            <div class="numbers-grid">
+                <div class="number-item fade-in">
+                    24/7
+                    <p style="font-size: 1rem; color: rgba(255, 255, 255, 0.7); margin-top: 0.5rem;">verfügbar – <br>keine Pausen, keine Feiertage</p>
+                </div>
+                <div class="number-item fade-in">
+                    > 90%
+                    <p style="font-size: 1rem; color: rgba(255, 255, 255, 0.7); margin-top: 0.5rem;">Kundenzufriedenheit im ersten Testlauf</p>
+                </div>
+                <div class="number-item fade-in">
+                    50%
+                    <p style="font-size: 1rem; color: rgba(255, 255, 255, 0.7); margin-top: 0.5rem;">Weniger Aufleger</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="funktionen" class="section">
+            <h2 class="fade-in">Funktionen deines Voice Agents</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📅</div>
+                    <h3>Automatisierte Terminvereinbarung</h3>
+                    <p>Der Agent vereinbart Termine selbstständig – direkt im Kalender deines Unternehmens. Vollautomatisch, 24/7 erreichbar und ohne Rückfragen.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🧾</div>
+                    <h3>Datenerfassung</h3>
+                    <p>Während des Gesprächs fragt der Agent strukturiert relevante Daten ab: Name, Geburtsdatum, Anliegen etc. – DSGVO-konform und vollständig.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Gesprächsweiterleitung</h3>
+                    <p>Bei dringenden oder besonderen Anliegen wird das Gespräch sofort an das zuständige Personal oder eine Notfallnummer weitergeleitet.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📝</div>
+                    <h3>Informationsaufnahme</h3>
+                    <p>Der Agent versteht den Gesprächskontext, fragt bei Unklarheiten nach und spricht in natürlicher Sprache – für ein echtes Gesprächsgefühl.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📲</div>
+                    <h3>Anruf-Weiterleitung</h3>
+                    <p>Je nach Anliegen kann der Agent gezielt an bestimmte Ansprechpartner oder Fachbereiche weiterleiten.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">✅</div>
+                    <h3>Automatische Benachrichtigung</h3>
+                    <p>Nach Terminbuchungen oder Anfragen sendet der Agent automatisch eine SMS-Bestätigung an den Anrufer – klar, professionell, verbindlich.</p>
+                </div>
+            </div>
+
+            <!-- Neuer Banner Bereich -->
+            <div class="feature-banners-container">
+                <div class="feature-banner-item fade-in">
+                    <h3 style="color: #ffffff;">Dein individueller Voice Agent</h3>
+                    <p style="font-size: 1rem; color: rgba(255, 255, 255, 0.7);">Wir entwickeln maßgeschneiderte KI-Lösungen, die perfekt zu deinen Unternehmensprozessen passen.</p>
+                </div>
+                <div class="feature-banner-item fade-in">
+                    <h3 style="color: #ffffff;">24/7 Verfügbarkeit</h3>
+                    <p style="font-size: 1rem; color: rgba(255, 255, 255, 0.7);">Dein Voice Agent ist rund um die Uhr erreichbar – auch außerhalb der Geschäftszeiten.</p>
+                </div>
+            </div>
+
+            <!-- Additional Text under Funktionen -->
+            <h3 class="fade-in" style="text-align: center; max-width: 900px; margin: 3rem auto 1rem auto; color: rgba(255, 255, 255, 0.8);">
+                Egal ob Arztpraxis, Unternehmen oder Vertriebsteam:
+            </h3>
+            <p class="fade-in" style="text-align: center; max-width: 900px; margin: 0 auto; color: rgba(255, 255, 255, 0.8); font-size: 1.1rem;">
+                Dominion Voice AI passt sich flexibel an Ihre Prozesse an und automatisiert Ihre Telefonkommunikation intelligent – ganz ohne Branchenbindung.
+            </p>
+        </section>
+
+        <!-- Demo Section -->
+        <section id="demo" class="section">
+            <h2 class="fade-in">Demo Anruf anhören</h2>
+            <div class="audio-player-container fade-in">
+                <audio controls>
+                    <source src="demo.wav" type="audio/wav">
+                    Ihr Browser unterstützt das Audio-Element nicht.
+                </audio>
+            </div>
+            <div class="demo fade-in" style="margin-top: 2rem;">
+                <h2 class="fade-in">Voice Agent erleben</h2>
+                <a href="tel:+4982190579002" class="btn btn-primary">Jetzt anrufen: +49 821 90579002</a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="kontakt" class="section">
+            <h2 class="fade-in">Kostenloses Erstgespräch sichern</h2>
+            <p class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto; color: rgba(255, 255, 255, 0.8);">Teile uns kurz mit, wie wir dir helfen können – wir melden uns persönlich.</p>
+            <div class="contact-form fade-in">
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="praxis">Unternehmen (Optional)</label>
+                        <input type="text" id="praxis" name="praxis">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefon">Telefon (Optional)</label>
+                        <input type="tel" id="telefon" name="telefon">
+                    </div>
+                    <div class="form-group">
+                        <label for="nachricht">Nachricht</label>
+                        <textarea id="nachricht" name="nachricht" rows="4" placeholder="Erzählen Sie uns von Ihren Anforderungen..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="privacy-consent" name="privacy-consent" required>
+                        <label for="privacy-consent" style="display: inline; margin-left: 0.5rem;">Ich stimme der Verarbeitung meiner Daten gemäß der <a href="Datenschutzerklärung.html" style="color: #00bfff; text-decoration: none;">Datenschutzerklärung</a> zu.</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Jetzt kostenloses Erstgespräch sichern</button>
+                    <div id="form-feedback" style="text-align: center; color: #00bfff; margin-top: 1rem;"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="impressum.html" target="_blank">Impressum</a>
+                    <a href="datenschutzerklaerung.html" target="_blank">Datenschutz</a>
+                    <a href="agb.html" target="_blank">AGB</a>
+                    <a href="https://www.linkedin.com/in/yannik-huber-81bbb7331/" target="_blank">LinkedIn</a>
+                </div>
+                <p>&copy; 2025 Dominion Voice AI. Alle Rechte vorbehalten.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formFeedback = document.getElementById('form-feedback');
+            formFeedback.textContent = 'Vielen Dank, wir melden uns in Kürze!';
+            // You might want to clear the form fields here
+            // this.reset();
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.98)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
