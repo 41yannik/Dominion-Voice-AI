@@ -1,0 +1,3245 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ConsentManager -->
+    <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/5406eba592030.js" data-cmp-host="d.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="0"></script>
+
+    <title>Dominion Voice AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            z-index: -2;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 191, 255, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #00bfff, transparent);
+            border-radius: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 400;
+        }
+
+        .nav-menu a:hover {
+            color: #00bfff;
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+        }
+
+        /* Theme Switch Position */
+        .theme-switch-wrapper {
+            position: absolute;
+            top: 25px; /* Adjust as needed */
+            right: 2rem;
+            z-index: 1001; /* Ensure it's above other elements */
+        }
+
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #000000; /* Black for dark mode track */
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white; /* White handle for dark mode */
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #ffffff; /* White for light mode track */
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #00bfff;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+            background-color: #333333; /* Dark handle for light mode */
+        }
+
+        /* Round sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        /* Light mode adjustments for the switch */
+        body.light-mode .theme-switch .slider {
+            background-color: #000000; /* If somehow unchecked in light mode, revert to dark mode track */
+            border: 1px solid #cccccc;
+        }
+
+        body.light-mode .theme-switch input:checked + .slider {
+            background-color: #ffffff; /* White for light mode track */
+            border: none; /* No border needed if it's white */
+        }
+
+        body.light-mode .theme-switch input:checked + .slider:before {
+            background-color: #333333; /* Dark handle for light mode */
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            padding: 0 2rem;
+        }
+
+        .hero-content {
+            text-align: left;
+            max-width: 50%;
+            padding: 0;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem; /* Restore original margin */
+            background: linear-gradient(135deg, #ffffff, #00bfff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(0, 191, 255, 0.3)); }
+            to { filter: drop-shadow(0 0 30px rgba(0, 191, 255, 0.6)); }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00bfff, #0099cc);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #33ccff, #00bfff);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 191, 255, 0.7);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #00bfff;
+            border: 2px solid #00bfff;
+        }
+
+        .btn-secondary:hover {
+            background: #00bfff;
+            color: #000000;
+            transform: translateY(-3px);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.5);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            position: relative;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #00bfff;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(0, 191, 255, 0.1);
+            border-color: #00bfff;
+            box-shadow: 0 0 40px rgba(0, 191, 255, 0.6), 0 10px 30px rgba(0, 191, 255, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #00bfff;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Feature Banners */
+        .feature-banners-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-banner-item {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            flex: 1;
+            min-width: 280px;
+            max-width: 45%; /* Um zwei Elemente pro Reihe auf größeren Bildschirmen zu ermöglichen */
+            border: 1px solid rgba(0, 191, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .feature-banner-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 35px rgba(0, 191, 255, 0.8), 0 0 25px rgba(0, 191, 255, 0.6);
+        }
+
+        .feature-banner-item h3 {
+            margin-bottom: 0.5rem;
+            color: #ffffff; /* Explizit weiß im Dark Mode */
+        }
+
+        .feature-banner-item p {
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.7); /* Explizit hellgrau im Dark Mode */
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: row; /* Logo und Theme Switch nebeneinander */
+                justify-content: space-between; /* Logo links, Theme Switch rechts */
+                padding: 0 1rem; /* Beibehaltung der Polsterung */
+                align-items: center; /* Vertikal zentrieren */
+            }
+
+            .nav-menu {
+                display: none; /* Navigation auf Mobilgeräten ausblenden */
+            }
+
+            .nav-menu a {
+                font-size: 0.8rem;
+                padding: 0.2rem 0.5rem;
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 2rem 1rem;
+                min-height: auto;
+                justify-content: center; /* Zentriert den Inhalt vertikal */
+                align-items: center; /* Zentriert den Inhalt horizontal */
+            }
+
+            .hero-content {
+                max-width: 100%;
+                width: 100%; /* Stellt sicher, dass es die gesamte Breite einnimmt */
+                text-align: center;
+                margin-bottom: 2rem;
+                padding: 0 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem; /* Deutlich kleinere Überschrift */
+                margin-bottom: 0.8rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem; /* Kleinere Unterüberschrift */
+                margin-bottom: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 0.8rem;
+                width: 100%;
+                align-items: center; /* Zentriert die Buttons */
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem; /* Kleinere Buttons */
+                font-size: 0.9rem; /* Kleinere Schrift für Buttons */
+            }
+
+            .hero-video {
+                width: 90%; /* Video auf Mobilgeräten etwas kleiner */
+                max-width: 350px; /* Max. Breite für Mobile Video */
+                height: auto;
+                margin: 2rem auto; /* Zentrieren und Abstand */
+            }
+
+            .hero-stats {
+                justify-content: center; /* Zentriert die Zahlen */
+                align-items: center;
+            }
+
+            .hero-stat-number {
+                font-size: 1.5rem; /* Kleinere Zahl auf Mobile */
+            }
+
+            .hero-stat-text {
+                font-size: 0.8rem; /* Kleinere Schriftgröße für Text auf Mobile */
+            }
+
+            .hero-stat-item {
+                text-align: center; /* Zentriert den Text der Zahlen */
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .features-grid,
+            .benefits-grid,
+            .numbers-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem; /* Kleinere Polsterung */
+            }
+
+            .feature-icon {
+                font-size: 2rem; /* Kleinere Icons */
+            }
+
+            .feature-card h3 {
+                font-size: 1.3rem; /* Kleinere Überschrift in Karten */
+            }
+
+            .feature-banner-item {
+                max-width: 100%;
+                padding: 1.5rem; /* Kleinere Polsterung */
+            }
+
+            .audio-player-container {
+                max-width: 100%;
+                padding: 1.5rem;
+            }
+
+            .demo .btn-primary {
+                width: 100%;
+                font-size: 0.9rem;
+                padding: 0.8rem 1.5rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .form-group label,
+            .form-group input,
+            .form-group textarea {
+                font-size: 0.9rem;
+                padding: 0.8rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem; /* Kleinerer Abstand zwischen Footer-Links */
+            }
+
+            .footer-links a {
+                font-size: 0.85rem;
+            }
+
+            .footer p {
+                font-size: 0.8rem;
+            }
+
+            .footer-columns {
+                flex-direction: column;
+                gap: 1.5rem; /* Abstand anpassen für Mobilgeräte */
+            }
+
+            .footer-column {
+                text-align: center;
+            }
+
+            .social-links {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .social-links li {
+                margin: 0 0.5rem;
+            }
+
+            .footer-content {
+                flex-direction: column; /* Stapeln von Logo und Inhalt auf Mobilgeräten */
+                align-items: center; /* Zentrieren der Elemente */
+            }
+
+            .footer-logo {
+                margin-right: 0; /* Entfernen des rechten Abstands */
+                margin-bottom: 1.5rem; /* Abstand unter dem Logo */
+            }
+
+            .footer-right-content {
+                width: 100%; /* Volle Breite */
+                align-items: center; /* Inhalt zentrieren */
+            }
+
+            .footer-columns {
+                flex-direction: row; /* Versuch, Spalten nebeneinander zu halten */
+                flex-wrap: wrap; /* Bei Bedarf umbrechen */
+                justify-content: center;
+                gap: 1rem; /* Further reduced gap on mobile */
+                margin-bottom: 1rem;
+            }
+            .footer-column {
+                flex: 1 1 auto; /* Flexibilität für die Spalten */
+                min-width: 120px; /* Kleinere Mindestbreite, damit sie nebeneinander passen */
+                text-align: center;
+            }
+
+            .theme-switch-wrapper {
+                position: absolute; /* Changed from static */
+                top: 1rem; /* Adjust for mobile if needed */
+                right: 1rem; /* Adjust for mobile if needed */
+                zoom: 0.8;
+                margin-top: 0; /* Remove existing margin-top */
+                margin-left: 0; /* Remove existing margin-left */
+                order: unset; /* Remove order property */
+            }
+
+            .theme-switch {
+                zoom: 0.8;
+            }
+
+            .demo-card-title {
+                font-size: 1.5rem; /* Reduced from 1.8rem to be smaller than section h2 on mobile */
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* Benefits Section */
+        .benefits { /* This class will now apply to the container of the new hero card and grid */
+            margin: 5rem 0;
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        /* New Benefits Hero Card Styles */
+        /* New Benefits Grid Styles (3x2) */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: left;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            background: rgba(0, 191, 255, 0.1);
+            border-color: #00bfff;
+            box-shadow: 0 0 40px rgba(0, 191, 255, 0.6), 0 10px 30px rgba(0, 191, 255, 0.3);
+        }
+
+        .benefit-card .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #00bfff;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .benefit-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card ul li {
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            padding-left: 1.5rem; /* Space for custom bullet */
+        }
+
+        .benefit-card ul li::before {
+            content: '•'; /* Custom bullet point */
+            color: #00bfff; /* Blue bullet */
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .benefit-card .benefit-result {
+            font-weight: 600;
+            color: #00bfff; /* Blue for emphasis */
+            margin-top: auto; /* Pushes it to the bottom of the card */
+            width: 100%;
+            text-align: left;
+        }
+
+        /* Responsive adjustments for Benefits Section */
+        @media (max-width: 768px) {
+            .benefits {
+                padding: 2rem 1rem;
+                margin: 3rem 0;
+            }
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .benefit-card {
+                padding: 1.5rem;
+            }
+            .benefit-card .benefit-icon {
+                font-size: 2rem;
+            }
+            .benefit-card h3 {
+                font-size: 1.3rem;
+            }
+            .benefit-card ul li {
+                font-size: 0.9rem;
+            }
+            .benefit-card .benefit-result {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Light Mode adjustments for Benefits Section */
+        body.light-mode .benefit-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 191, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.2);
+        }
+
+        body.light-mode .benefit-card:hover {
+            background: rgba(240, 240, 240, 0.9);
+            border-color: #00bfff;
+            box-shadow: 0 0 40px rgba(0, 191, 255, 0.4), 0 10px 30px rgba(0, 191, 255, 0.2);
+        }
+
+        body.light-mode .benefit-card .benefit-icon,
+        body.light-mode .benefit-card h3 {
+            color: #333333;
+        }
+
+        body.light-mode .benefit-card ul li {
+            color: #555555;
+        }
+
+        body.light-mode .benefit-card ul li::before,
+        body.light-mode .benefit-card .benefit-result {
+            color: #00bfff;
+        }
+
+        /* Numbers Section Styles */
+        .numbers-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .numbers-grid {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .number-item {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #00bfff;
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .number-item:hover {
+            transform: scale(1.05) translateY(-5px);
+            text-shadow: 0 0 20px rgba(0, 191, 255, 0.8);
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.4);
+            border-radius: 15px;
+        }
+
+        /* Numbers Section - Dark Mode Specific Colors */
+        .numbers-section .number-item p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Privacy Consent Link */
+        .form-group #privacy-consent + label a {
+            color: #00bfff;
+            text-decoration: none;
+        }
+
+        .hero-video {
+            width: 45%; /* Angepasste Breite für das Video */
+            max-width: 450px; /* Angepasste maximale Breite */
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center; /* Elemente mittig ausrichten */
+            align-items: flex-start;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            width: 100%;
+            gap: 2rem; /* Abstand zwischen den Elementen erhöhen */
+        }
+
+        .hero-stat-item {
+            text-align: center; /* Text mittig ausrichten */
+            color: #ffffff;
+            margin-bottom: 1rem;
+            flex: 0 0 auto;
+            width: auto;
+            min-width: 80px;
+        }
+
+        .hero-stat-number {
+            font-size: 2.5rem; /* Erhöhte Schriftgröße, um hervorzustechen */
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        /* New Demo Cards Section Styles */
+        .demo-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start; /* Links ausrichten */
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 100%; /* Volle Breite */
+            margin-left: auto;
+            margin-right: auto;
+            flex-direction: column; /* Immer untereinander stapeln */
+            align-items: flex-start; /* Inhalte linksbündig im Container */
+        }
+
+        .demo-card-audio,
+        .demo-card-call {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: left; /* Text linksbündig innerhalb der Karte */
+            flex: 1;
+            min-width: 280px;
+            max-width: 100%; /* Volle Breite für gestapelte Karten */
+            border: 1px solid rgba(0, 191, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Inhalt oben ausrichten */
+            align-items: flex-start; /* Inhalt linksbündig ausrichten */
+        }
+
+        .demo-card-audio:hover,
+        .demo-card-call:hover {
+        }
+
+        /* New style for demo card titles */
+        .demo-card-title {
+            font-size: 2rem; /* Reduced from 2.5rem to be smaller than section h2 */
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #00bfff;
+            width: 100%;
+        }
+
+        /* Light Mode Styles */
+        body.light-mode {
+            background: #ffffff;
+            color: #333333; /* Dunkler Text für den Light Mode */
+        }
+
+        body.light-mode .header {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(0, 191, 255, 0.3);
+        }
+
+        body.light-mode .nav-container {
+            border-bottom: none; /* Im Light Mode keine untere Linie am Header */
+        }
+
+        body.light-mode .logo {
+            color: #333333;
+        }
+
+        body.light-mode .logo::after {
+            background: linear-gradient(90deg, #00bfff, transparent);
+        }
+
+        body.light-mode .nav-menu a {
+            color: #333333;
+        }
+
+        body.light-mode .nav-menu a:hover {
+            color: #00bfff;
+            text-shadow: none; /* Im Light Mode kein Textschatten */
+        }
+
+        body.light-mode .hero-content {
+            color: #333333;
+        }
+
+        body.light-mode .hero h1 {
+            background: linear-gradient(135deg, #333333, #00bfff); /* Dunklerer Start für den Farbverlauf */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1)); /* Leichter Schatten */
+        }
+
+        body.light-mode .hero p {
+            color: #555555;
+        }
+
+        body.light-mode .section h2 {
+            color: #00bfff; /* Blau bleibt */
+        }
+
+        body.light-mode .feature-card,
+        body.light-mode .feature-banner-item,
+        body.light-mode .audio-player-container {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 191, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.2);
+        }
+
+        body.light-mode .feature-card:hover,
+        body.light-mode .feature-banner-item:hover,
+        body.light-mode .audio-player-container:hover {
+            background: rgba(240, 240, 240, 0.9);
+            border-color: #00bfff;
+            box-shadow: 0 0 40px rgba(0, 191, 255, 0.4), 0 10px 30px rgba(0, 191, 255, 0.2);
+        }
+
+        body.light-mode .feature-card h3,
+        body.light-mode .feature-banner-item h3 {
+            color: #333333;
+        }
+
+        body.light-mode .feature-card p,
+        body.light-mode .feature-banner-item p {
+            color: #555555;
+        }
+
+        body.light-mode .benefit-item {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 191, 255, 0.2);
+        }
+
+        body.light-mode .benefit-item:hover {
+            background: rgba(0, 191, 255, 0.1);
+            border-color: rgba(0, 191, 255, 0.5);
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);
+        }
+
+        body.light-mode section#vorteile h3,
+        body.light-mode section#vorteile p {
+            color: #333333;
+        }
+
+        body.light-mode .demo,
+        body.light-mode .contact-form {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 191, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.2);
+        }
+
+        body.light-mode .demo-placeholder {
+            background: rgba(0, 191, 255, 0.1);
+            border: 2px dashed #00bfff;
+        }
+
+        body.light-mode .form-group label {
+            color: #00bfff;
+        }
+
+        body.light-mode .form-group input,
+        body.light-mode .form-group textarea {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 191, 255, 0.4);
+            color: #333333;
+        }
+
+        body.light-mode .form-group input:focus,
+        body.light-mode .form-group textarea:focus {
+            border-color: #00bfff;
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+        }
+
+        body.light-mode .footer {
+            background: #f8f8f8; /* Leichter Hintergrund für den Footer */
+            border-top: 1px solid rgba(0, 191, 255, 0.3);
+        }
+
+        body.light-mode .footer-column-title {
+            color: #00bfff;
+        }
+
+        body.light-mode .footer-links li a {
+            color: #555555;
+        }
+
+        body.light-mode .footer-links li a:hover {
+            color: #00bfff;
+        }
+
+        body.light-mode .footer p {
+            color: #333333;
+        }
+
+        body.light-mode .numbers-section .number-item p {
+            color: #555555;
+        }
+
+        body.light-mode .demo-card-audio,
+        body.light-mode .demo-card-call {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 191, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.2);
+        }
+
+        body.light-mode .demo-card-audio h3,
+        body.light-mode .demo-card-call h3 {
+            color: #333333;
+        }
+
+        body.light-mode .demo-card-audio p,
+        body.light-mode .demo-card-call p {
+            color: #555555;
+        }
+
+        body.light-mode .btn-primary {
+            background: linear-gradient(135deg, #00bfff, #0099cc);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+        }
+
+        body.light-mode .btn-secondary {
+            background: transparent;
+            color: #00bfff;
+            border: 2px solid #00bfff;
+        }
+
+        body.light-mode .btn-secondary:hover {
+            background: #00bfff;
+            color: #000000;
+            text-shadow: none;
+        }
+
+        /* Adjust hero stats for light mode */
+        body.light-mode .hero-stat-item {
+            color: #333333;
+        }
+
+        body.light-mode .hero-stat-number {
+            color: #00bfff;
+        }
+
+        body.light-mode .hero-stat-text {
+            color: #555555;
+        }
+
+        body.light-mode .audio-player-container audio {
+            background-color: rgba(255, 255, 255, 0.8); /* Light background for the player in light mode */
+            border: 1px solid rgba(0, 191, 255, 0.4);
+            filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1)); /* Lighter shadow in light mode */
+        }
+
+        /* Target Audience Grid */
+        .target-audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .target-audience-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: left; /* Aligns text within the card */
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .target-audience-card:hover {
+            transform: translateY(-10px);
+            background: rgba(0, 191, 255, 0.1);
+            border-color: #00bfff;
+            box-shadow: 0 0 40px rgba(0, 191, 255, 0.6), 0 10px 30px rgba(0, 191, 255, 0.3);
+        }
+
+        .target-audience-card .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #00bfff;
+        }
+
+        .target-audience-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .target-audience-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1rem;
+        }
+
+        .target-audience-card ul li {
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            padding-left: 1.5rem; /* Space for custom bullet */
+        }
+
+        .target-audience-card ul li::before {
+            content: '•'; /* Custom bullet point */
+            color: #00bfff; /* Blue bullet */
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .target-audience-card .benefit-text {
+            font-weight: 600;
+            color: #00bfff; /* Blue for emphasis */
+            margin-top: auto; /* Pushes it to the bottom of the card */
+            width: 100%;
+            text-align: left;
+        }
+
+        /* Responsive adjustments for Target Audience Section */
+        @media (max-width: 768px) {
+            .target-audience-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .target-audience-card {
+                padding: 1.5rem;
+            }
+            .target-audience-card .card-icon {
+                font-size: 2rem;
+            }
+            .target-audience-card h3 {
+                font-size: 1.3rem;
+            }
+            .target-audience-card ul li {
+                font-size: 0.9rem;
+            }
+            .target-audience-card .benefit-text {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Light Mode adjustments for Target Audience Section */
+        body.light-mode .target-audience-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 191, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.2);
+        }
+
+        body.light-mode .target-audience-card:hover {
+            background: rgba(240, 240, 240, 0.9);
+            border-color: #00bfff;
+            box-shadow: 0 0 40px rgba(0, 191, 255, 0.4), 0 10px 30px rgba(0, 191, 255, 0.2);
+        }
+
+        body.light-mode .target-audience-card .card-icon,
+        body.light-mode .target-audience-card h3 {
+            color: #333333;
+        }
+
+        body.light-mode .target-audience-card ul li {
+            color: #555555;
+        }
+
+        body.light-mode .target-audience-card ul li::before,
+        body.light-mode .target-audience-card .benefit-text {
+            color: #00bfff;
+        }
+
+        /* CTA below Target Audience Section */
+        .cta-below-target-audience {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(0, 191, 255, 0.2);
+        }
+
+        .cta-below-target-audience .cta-text {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.4;
+        }
+
+        .cta-below-target-audience .btn {
+            font-size: 1.1rem;
+            padding: 1.2rem 2.5rem;
+        }
+
+        /* Responsive adjustments for CTA */
+        @media (max-width: 768px) {
+            .cta-below-target-audience {
+                padding: 2rem 1rem;
+                margin-top: 2rem;
+            }
+            .cta-below-target-audience .cta-text {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+            .cta-below-target-audience .btn {
+                width: 100%;
+                font-size: 1rem;
+                padding: 1rem 2rem;
+            }
+        }
+
+        /* Light Mode adjustments for CTA */
+        body.light-mode .cta-below-target-audience {
+            border-top: 1px solid rgba(0, 191, 255, 0.4);
+        }
+
+        body.light-mode .cta-below-target-audience .cta-text {
+            color: #333333;
+        }
+
+        body.light-mode .cta-below-target-audience .btn {
+            /* Primary button styles already handle light mode */
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+            backdrop-filter: blur(8px); /* Blur effect */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #000000; /* Dark background for modal */
+            margin: auto; /* Centered */
+            padding: 2rem;
+            border: 1px solid #00bfff;
+            border-radius: 15px;
+            width: 80%; /* Could be responsive */
+            max-width: 800px; /* Max width for larger screens */
+            box-shadow: 0 0 50px rgba(0, 191, 255, 0.7);
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content video {
+            width: 100%;
+            max-height: 70vh;
+            display: block;
+            margin-top: 1.5rem;
+            border-radius: 10px;
+            outline: none; /* Remove default video player outline */
+        }
+
+        .modal-content h3 {
+            color: #00bfff;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .close-button {
+            color: #00bfff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #ffffff;
+            transform: rotate(90deg);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                padding: 1rem;
+            }
+            .modal-content h3 {
+                font-size: 1.4rem;
+            }
+            .close-button {
+                font-size: 2rem;
+                top: 5px;
+                right: 15px;
+            }
+        }
+
+        /* Light Mode for Modal */
+        body.light-mode .modal-content {
+            background-color: #f0f0f0; /* Lighter background */
+            border: 1px solid rgba(0, 191, 255, 0.5);
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.4);
+        }
+
+        body.light-mode .modal-content h3,
+        body.light-mode .close-button {
+            color: #00bfff;
+        }
+
+        body.light-mode .close-button:hover,
+        body.light-mode .close-button:focus {
+            color: #333333;
+        }
+
+        /* Features Section - New Styles */
+        .features-container {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+        }
+
+        .features-tabs {
+            flex: 0 0 250px; /* Fixed width for tabs on larger screens */
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+        }
+
+        .tab-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.7);
+            border: 1px solid transparent;
+        }
+
+        .tab-item:hover {
+            background: rgba(0, 191, 255, 0.1);
+            color: #00bfff;
+            border-color: rgba(0, 191, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
+        }
+
+        .tab-item.active {
+            background: linear-gradient(135deg, rgba(0, 191, 255, 0.2), rgba(0, 153, 204, 0.2));
+            color: #00bfff;
+            border-color: #00bfff;
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.6);
+        }
+
+        .tab-icon {
+            font-size: 1.8rem;
+            color: inherit; /* Inherits color from parent */
+            margin-right: 0.5rem;
+            transition: filter 0.3s ease; /* Add transition for filter */
+        }
+
+        .tab-item.active .tab-icon,
+        .tab-item:hover .tab-icon {
+            filter: drop-shadow(0 0 8px rgba(0, 191, 255, 0.7)); /* Subtle glow effect */
+        }
+
+        .tab-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .features-content {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 1.5rem; /* Reduced from 2.5rem */
+            border: 1px solid rgba(0, 191, 255, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+            position: relative;
+        }
+
+        .content-slide {
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .content-slide.active {
+            display: block;
+        }
+
+        .slide-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem; /* Reduced from 1.5rem */
+        }
+
+        .slide-icon {
+            font-size: 2.5rem; /* Reduced from 3rem */
+            color: #00bfff;
+            margin-right: 1rem; /* Reduced from 1.5rem */
+        }
+
+        .content-slide h3 {
+            font-size: 1.8rem; /* Reduced from 2rem */
+            color: #00bfff;
+            margin-bottom: 0.3rem; /* Reduced from 0.5rem */
+            background: linear-gradient(135deg, #ffffff, #00bfff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .content-slide p {
+            font-size: 1rem; /* Reduced from 1.1rem */
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1rem; /* Reduced from 1.5rem */
+        }
+
+        .content-slide .subtext {
+            font-size: 0.8rem; /* Reduced from 0.9rem */
+            color: rgba(0, 191, 255, 0.7); /* Lighter blue for subtext */
+            display: block;
+            margin-top: 0.3rem; /* Reduced from 0.5rem */
+            font-style: italic;
+        }
+
+        .slide-visual {
+            margin-bottom: 1.5rem; /* Reduced from 2rem */
+            text-align: center;
+        }
+
+        .slide-visual img {
+            max-width: 100%;
+            max-height: 300px; /* New: Set a max height for the image */
+            width: auto; /* Allow width to adjust based on height */
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .slide-visual img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 40px rgba(0, 191, 255, 0.6);
+        }
+
+        .slide-cta {
+            margin-top: 0.5rem; /* Reduced from 1rem */
+            display: inline-block;
+        }
+
+        /* CTA & Social Proof Section */
+        .cta-features-section {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+            backdrop-filter: blur(10px);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-features-text {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #00bfff;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-features-reason {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 1.5rem;
+            line-height: 1.5;
+        }
+
+        /* Responsive adjustments for Features Section */
+        @media (max-width: 992px) {
+            .features-container {
+                flex-direction: column; /* Stack tabs and content on medium screens */
+            }
+            .features-tabs {
+                flex-direction: row; /* Tabs become horizontal */
+                flex: none; /* Remove fixed width */
+                width: 100%;
+                overflow-x: auto; /* Enable horizontal scrolling for tabs */
+                white-space: nowrap;
+                padding: 1rem;
+                justify-content: flex-start; /* Align tabs to the start */
+            }
+            .tab-item {
+                flex-shrink: 0; /* Prevent tabs from shrinking */
+                padding: 0.8rem 1rem;
+            }
+            .features-content {
+                padding: 1.5rem;
+            }
+            .content-slide h3 {
+                font-size: 1.6rem;
+            }
+            .content-slide p {
+                font-size: 1rem;
+            }
+            .slide-icon {
+                font-size: 2.5rem;
+            }
+            .cta-features-text {
+                font-size: 1.5rem;
+            }
+            .cta-features-reason {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .features-container {
+                gap: 1.5rem;
+            }
+            .features-tabs {
+                padding: 0.8rem;
+                gap: 0.5rem;
+            }
+            .tab-item {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.9rem;
+                flex-direction: column; /* Stack icon and title on small mobile */
+                text-align: center;
+                width: auto; /* Adjust width for stacked items */
+                align-items: center;
+            }
+            .tab-icon {
+                font-size: 1.5rem;
+                margin-right: 0;
+                margin-bottom: 0.3rem;
+            }
+            .tab-title {
+                font-size: 0.8rem;
+            }
+            .features-content {
+                padding: 1rem;
+            }
+            .content-slide h3 {
+                font-size: 1.4rem;
+            }
+            .content-slide p {
+                font-size: 0.9rem;
+            }
+            .slide-icon {
+                font-size: 2rem;
+                margin-right: 1rem;
+            }
+            .cta-features-section {
+                padding: 2rem 1rem;
+                margin-top: 3rem;
+            }
+            .cta-features-text {
+                font-size: 1.2rem;
+            }
+            .cta-features-reason {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Light Mode for Features Section */
+        body.light-mode .features-tabs,
+        body.light-mode .features-content,
+        body.light-mode .cta-features-section {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 191, 255, 0.4);
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.2);
+        }
+
+        body.light-mode .tab-item {
+            color: #333333;
+        }
+
+        body.light-mode .tab-item:hover {
+            background: rgba(0, 191, 255, 0.1);
+            color: #00bfff;
+            border-color: rgba(0, 191, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);
+        }
+
+        body.light-mode .tab-item.active {
+            background: linear-gradient(135deg, rgba(0, 191, 255, 0.1), rgba(0, 153, 204, 0.1));
+            color: #00bfff;
+            border-color: #00bfff;
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.4);
+        }
+
+        body.light-mode .tab-icon {
+            color: #333333; /* Default icon color in light mode */
+            transition: filter 0.3s ease; /* Add transition for filter */
+        }
+
+        body.light-mode .tab-item.active .tab-icon,
+        body.light-mode .tab-item:hover .tab-icon {
+            filter: drop-shadow(0 0 8px rgba(0, 191, 255, 0.5)); /* Subtle glow effect for light mode */
+        }
+
+        body.light-mode .tab-title {
+            color: #333333;
+        }
+
+        body.light-mode .tab-item.active .tab-title {
+            color: #00bfff;
+        }
+
+        body.light-mode .slide-icon,
+        body.light-mode .content-slide h3 {
+            color: #00bfff;
+            background: linear-gradient(135deg, #333333, #00bfff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+        }
+
+        body.light-mode .content-slide p {
+            color: #555555;
+        }
+
+        body.light-mode .content-slide .subtext {
+            color: rgba(0, 191, 255, 0.7);
+        }
+
+        body.light-mode .slide-visual img {
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-mode .slide-visual img:hover {
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+        }
+
+        body.light-mode .cta-features-text {
+            color: #00bfff;
+        }
+
+        body.light-mode .cta-features-reason {
+            color: #555555;
+        }
+
+        /* Contact Section - New Styles */
+        .section.contact-form-section {
+            max-width: 700px; /* Reduced from 600px */
+            margin: auto; /* Center the section */
+            padding: 40px; /* Increased padding */
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-title {
+            color: #00bfff;
+            font-size: 2.5rem; /* Match section h2 */
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .contact-subtitle {
+            color: #ccc;
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .contact-container {
+            display: block; /* Ensures elements stack */
+            max-width: 600px; /* Adjust max-width for a single column form */
+            margin: 0 auto; /* Center the container */
+            padding: 0; /* Remove padding as it's now on .section.contact-form-section */
+            background: none; /* No background needed here, already on section */
+            border: none; /* No border needed here */
+            box-shadow: none; /* No shadow needed here */
+            backdrop-filter: none; /* No blur needed here */
+            align-items: unset;
+        }
+
+        /* Form Group Styles */
+        .contact-container .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-container .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ffffff; /* White text for labels */
+            font-weight: 500;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-container .form-group input,
+        .contact-container .form-group textarea,
+        .contact-container .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(0, 191, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.6); /* Slightly darker for input */
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .contact-container .form-group input::placeholder,
+        .contact-container .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .contact-container .form-group input:focus,
+        .contact-container .form-group textarea:focus,
+        .contact-container .form-group select:focus {
+            outline: none;
+            border-color: #00bfff;
+            box-shadow: 0 0 12px rgba(0, 191, 255, 0.6); /* Neon glow effect */
+        }
+
+        .contact-container .form-group select {
+            appearance: none; /* Remove default dropdown arrow */
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292%22%20height%3D%22292%22%3E%3Cpath%20fill%3D%22%2300BFFF%22%20d%3D%22M287%2C197.3L146%2C56.3L5%2C197.3L5%2C157.3L146%2C16.3L287%2C157.3L287%2C197.3z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 0.7em top 50%;
+            background-size: 0.65em auto;
+        }
+
+        .contact-container .field-description {
+            font-size: 0.85rem; /* Adjusted */
+            color: #aaa; /* Gray color for description */
+            margin-top: 0.3rem;
+            margin-left: 0.1rem;
+        }
+
+        .contact-container .char-count {
+            font-size: 0.9rem; /* Adjusted */
+            color: rgba(255, 255, 255, 0.6);
+            text-align: right;
+            margin-top: 0.3rem;
+        }
+
+        .contact-container .privacy-consent-group label {
+            font-size: 0.95rem; /* Adjusted */
+            color: #ffffff; /* White color for consent text */
+            align-items: center; /* Align checkbox with text start */
+        }
+
+        .contact-container .privacy-consent-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 0.5rem;
+            min-width: 20px;
+            min-height: 20px;
+            accent-color: #00bfff;
+            cursor: pointer;
+        }
+
+        /* Contact Button Styles */
+        .btn-contact {
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            width: 100%;
+            margin-top: 1.5rem;
+            background: linear-gradient(135deg, #00bfff, #0099cc);
+            color: #ffffff;
+            box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
+            transition: all 0.3s ease;
+            border: none; /* Ensure no default border */
+            border-radius: 8px; /* Match input border-radius */
+            cursor: pointer;
+        }
+
+        .btn-contact:hover {
+            background: linear-gradient(135deg, #33ccff, #00bfff);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(0, 191, 255, 0.9);
+        }
+
+        .form-feedback {
+            color: #00bfff;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* Responsive for Contact Section */
+        @media (max-width: 768px) {
+            .section.contact-form-section {
+                padding: 20px;
+            }
+            .contact-title {
+                font-size: 2rem;
+            }
+            .contact-subtitle {
+                font-size: 1rem;
+            }
+            .contact-container .form-group input,
+            .contact-container .form-group textarea,
+            .contact-container .form-group select {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+            .contact-container .form-group label {
+                font-size: 0.9rem;
+            }
+            .contact-container .field-description,
+            .contact-container .char-count {
+                font-size: 0.8rem;
+            }
+            .contact-container .privacy-consent-group label {
+                font-size: 0.85rem;
+            }
+            .btn-contact {
+                padding: 0.9rem 1.8rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Light Mode for Contact Section */
+        body.light-mode .section.contact-form-section {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 191, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);
+        }
+
+        body.light-mode .contact-title {
+            color: #00bfff;
+        }
+
+        body.light-mode .contact-subtitle {
+            color: #555;
+        }
+
+        body.light-mode .contact-container .form-group label {
+            color: #333333;
+        }
+
+        body.light-mode .contact-container .form-group input,
+        body.light-mode .contact-container .form-group textarea,
+        body.light-mode .contact-container .form-group select {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 191, 255, 0.4);
+            color: #333333;
+        }
+
+        body.light-mode .contact-container .form-group input::placeholder,
+        body.light-mode .contact-container .form-group textarea::placeholder {
+            color: rgba(51, 51, 51, 0.5);
+        }
+
+        body.light-mode .contact-container .form-group input:focus,
+        body.light-mode .contact-container .form-group textarea:focus,
+        body.light-mode .contact-container .form-group select:focus {
+            border-color: #00bfff;
+            box-shadow: 0 0 12px rgba(0, 191, 255, 0.4);
+        }
+
+        body.light-mode .contact-container .form-group select {
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292%22%20height%3D%22292%22%3E%3Cpath%20fill%3D%22%23333333%22%20d%3D%22M287%2C197.3L146%2C56.3L5%2C197.3L5%2C157.3L146%2C16.3L287%2C157.3L287%2C197.3z%22%2F%3E%3C%2Fsvg%3E'); /* Darker arrow for light mode */
+        }
+
+        body.light-mode .contact-container .field-description,
+        body.light-mode .contact-container .char-count {
+            color: rgba(51, 51, 51, 0.6);
+        }
+
+        body.light-mode .contact-container .privacy-consent-group label {
+            color: #333333;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 2rem 0; /* Erhöhter vertikaler Abstand */
+            text-align: center;
+            border-top: 1px solid rgba(0, 191, 255, 0.3);
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem; /* Padding reduzieren */
+            display: flex;
+            justify-content: space-between; /* Logo links, Spalten rechts */
+            align-items: flex-start; /* Oben ausrichten */
+            flex-wrap: wrap;
+            gap: 2rem; /* Abstand zwischen Logo und Spalten reduzieren */
+        }
+
+        .footer-logo {
+            flex-shrink: 0;
+            margin-right: 1.5rem; /* Abstand zum rechten Inhalt reduzieren */
+            margin-bottom: 0; /* Kein Bodenabstand auf Desktop */
+            padding-top: 0.3rem; /* Leichte Anpassung, um mit Texten oben auszurichten */
+        }
+
+        .footer-logo img {
+            max-width: 100px; /* Leicht vergrößertes Logo */
+            height: auto;
+        }
+
+        .footer-krone-logo {
+            max-width: 80px; /* Größe für Desktop */
+            height: auto;
+            margin-top: 0.5rem;
+        }
+
+        .footer-columns {
+            display: flex;
+            flex-grow: 1;
+            justify-content: space-between; /* Spalten gleichmäßig verteilen */
+            gap: 1.5rem; /* Abstand zwischen Spalten reduzieren */
+            flex-wrap: wrap;
+            width: auto; /* Automatische Breite, um sich an flex-grow anzupassen */
+            max-width: 70%; /* Begrenzung der Breite der Spalten auf großen Bildschirmen */
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 120px; /* Etwas breitere Spaltenbasis */
+            text-align: left; /* Text linksbündig */
+        }
+
+        .footer-column-title {
+            font-size: 1.1rem; /* Etwas größere Titel */
+            font-weight: 600;
+            color: #00bfff;
+            margin-bottom: 0.8rem;
+            padding-top: 0; /* Entfernen von zusätzlichem Padding */
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem; /* Leicht erhöhter Abstand zwischen Links */
+        }
+
+        .footer-links li a {
+            color: rgba(255, 255, 255, 0.8); /* Etwas heller */
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.85rem; /* Leicht größere Schriftgröße */
+        }
+
+        .footer-links li a:hover {
+            color: #00bfff;
+        }
+
+        .social-links {
+            flex-direction: column; /* Socials wieder vertikal untereinander */
+            gap: 0.4rem; /* Weniger Abstand */
+            margin-top: 0.3rem;
+            align-items: flex-start; /* Links ausrichten */
+        }
+
+        .social-links li a {
+            font-size: 0.9rem;
+        }
+
+        .social-links li a i {
+            margin-right: 0.4rem; /* Erhöhter Abstand zum Icon */
+        }
+
+        .copyright {
+            width: 100%; /* Copyright nimmt volle Breite ein */
+            text-align: center;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 2rem; /* Mehr Abstand zum Inhalt darüber */
+            border-top: 1px solid rgba(0, 191, 255, 0.1); /* Dezente Trennlinie */
+            padding-top: 1rem; /* Abstand nach der Trennlinie */
+        }
+
+        /* Responsive adjustments for Footer */
+        @media (max-width: 768px) {
+            .footer {
+                padding: 1.5rem 0; /* Angepasster Padding auf Mobilgeräten */
+            }
+            .footer-content {
+                gap: 1rem;
+            }
+            .footer-logo img {
+                max-width: 80px; /* Even smaller logo on mobile */
+            }
+            .footer-krone-logo {
+                max-width: 60px; /* Noch kleiner auf Mobilgeräten */
+                margin-top: 0.3rem;
+            }
+            .footer-column-title {
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            .footer-links li a {
+                font-size: 0.75rem;
+            }
+            .social-links li a {
+                font-size: 0.8rem;
+            }
+            .copyright {
+                font-size: 0.7rem;
+                margin-top: 1.5rem;
+                padding-top: 0.8rem;
+            }
+        }
+
+        /* Light Mode for Footer */
+        body.light-mode .footer {
+            background: #f8f8f8;
+            border-top: 1px solid rgba(0, 191, 255, 0.4);
+            color: #333333;
+        }
+
+        body.light-mode .footer-content {
+            /* No specific changes needed, inherited colors work */
+        }
+
+        body.light-mode .footer-logo img {
+            /* No specific changes needed */
+        }
+
+        body.light-mode .footer-column-title {
+            color: #00bfff;
+        }
+
+        body.light-mode .footer-links li a {
+            color: #555555;
+        }
+
+        body.light-mode .footer-links li a:hover {
+            color: #00bfff;
+        }
+
+        body.light-mode .social-links li a {
+            color: #333333;
+        }
+
+        body.light-mode .social-links li a:hover {
+            color: #00bfff;
+        }
+
+        body.light-mode .footer p {
+            color: #555555;
+        }
+
+        /* Demo Section Styles */
+        .demo-content-wrapper {
+            display: flex;
+            flex-direction: column; /* Stack vertically by default */
+            gap: 3rem;
+            align-items: center; /* Center items horizontally */
+            margin-top: 3rem;
+        }
+
+        .demo-audio-visual {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 2.5rem;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .demo-audio-visual h3 {
+            font-size: 1.8rem;
+            color: #00bfff;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .audio-player-container {
+            margin-bottom: 2rem;
+            width: 100%; /* Ensure full width of container */
+            display: flex;
+            justify-content: center;
+        }
+
+        .audio-player-container audio {
+            width: 90%; /* Vergrößert den Audio-Player */
+            max-width: 500px; /* Erhöht die maximale Breite */
+            filter: invert(1);
+        }
+
+        .dialog-bubble-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+            text-align: left;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .bubble {
+            padding: 0.8rem 1.2rem;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            line-height: 1.4;
+            position: relative;
+            max-width: 85%;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bubble .icon {
+            font-size: 1.3rem;
+            margin-right: 0.3rem;
+        }
+
+        .user-bubble {
+            background-color: #008be6; /* Ein dezenteres Blau */
+            color: #ffffff;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 139, 230, 0.5); /* Angepasster Schatten */
+        }
+
+        .agent-bubble {
+            background-color: #333;
+            color: #ffffff;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .demo-explanation {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 2rem;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .demo-cta-live {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 2.5rem;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .demo-cta-live h3 {
+            font-size: 1.8rem;
+            color: #00bfff;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .demo-cta-live p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .btn-call-demo {
+            font-size: 1.4rem;
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, #00bfff, #0099cc);
+            color: #ffffff;
+            box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+
+        .btn-call-demo:hover {
+            background: linear-gradient(135deg, #33ccff, #00bfff);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(0, 191, 255, 0.9);
+        }
+
+        .no-selling-note {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 1.5rem;
+        }
+
+        /* Responsive adjustments for Demo Section */
+        @media (min-width: 769px) {
+            .demo-content-wrapper {
+                flex-direction: row; /* Side-by-side on larger screens */
+                justify-content: center; /* Center the two main columns */
+                align-items: flex-start; /* Align content to the top within columns */
+            }
+            .demo-audio-visual,
+            .demo-cta-live {
+                flex: 1;
+                max-width: 48%; /* Adjust width for side-by-side */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .demo-audio-visual,
+            .demo-cta-live {
+                padding: 1.5rem;
+            }
+            .demo-audio-visual h3,
+            .demo-cta-live h3 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            .audio-player-container audio {
+                max-width: 100%;
+            }
+            .bubble {
+                font-size: 0.95rem;
+                padding: 0.6rem 1rem;
+            }
+            .bubble .icon {
+                font-size: 1.1rem;
+            }
+            .demo-explanation {
+                font-size: 0.9rem;
+                margin-top: 1.5rem;
+            }
+            .demo-cta-live p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            .btn-call-demo {
+                font-size: 1.1rem;
+                padding: 1rem 2rem;
+            }
+            .no-selling-note {
+                font-size: 0.8rem;
+                margin-top: 1rem;
+            }
+        }
+
+        /* Light Mode for Demo Section */
+        body.light-mode .demo-audio-visual,
+        body.light-mode .demo-cta-live {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 191, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.2);
+        }
+
+        body.light-mode .demo-audio-visual h3,
+        body.light-mode .demo-cta-live h3 {
+            color: #00bfff;
+        }
+
+        body.light-mode .demo-audio-visual .audio-player-container audio {
+            filter: none; /* Remove invert filter in light mode */
+        }
+
+        body.light-mode .dialog-bubble-container .user-bubble {
+            background-color: #008be6; /* Dezenteres Blau im Light Mode */
+            color: #ffffff;
+            box-shadow: 0 5px 15px rgba(0, 139, 230, 0.3);
+        }
+
+        body.light-mode .dialog-bubble-container .agent-bubble {
+            background-color: #eee;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-mode .bubble.active {
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.4), 0 0 15px rgba(0, 191, 255, 0.2);
+            border-color: #00bfff;
+        }
+
+        body.light-mode .demo-explanation,
+        body.light-mode .demo-cta-live p {
+            color: #555;
+        }
+
+        body.light-mode .no-selling-note {
+            color: #777;
+        }
+
+        .agent-bubble {
+            background-color: #333;
+            color: #ffffff;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .bubble.active {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.8), 0 0 15px rgba(0, 191, 255, 0.6);
+            border-color: #00bfff;
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+        }
+
+        .demo-explanation {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 2rem;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        body.light-mode .dialog-bubble-container .agent-bubble {
+            background-color: #eee;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-mode .bubble.active {
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.4), 0 0 15px rgba(0, 191, 255, 0.2);
+            border-color: #00bfff;
+        }
+
+        body.light-mode .demo-explanation,
+        body.light-mode .demo-cta-live p {
+            color: #555;
+        }
+
+        body.light-mode .no-selling-note {
+            color: #777;
+        }
+
+        body.light-mode .social-links li a {
+            color: #333333;
+        }
+
+        body.light-mode .social-links li a:hover {
+            color: #00bfff;
+        }
+
+        body.light-mode .copyright {
+            color: #555555;
+            border-top: 1px solid rgba(0, 191, 255, 0.2); /* Dezente Trennlinie im Light Mode */
+        }
+
+        /* New Styles for Hero Krone Logo */
+        .hero-header-content {
+            display: flex;
+            align-items: center; /* Vertikale Ausrichtung auf gleicher Höhe */
+            gap: 1rem; /* Abstand zwischen Überschrift und Logo */
+            margin-bottom: 1rem; /* Abstand zum folgenden Absatz beibehalten */
+        }
+
+        .hero-krone-logo {
+            max-width: 60px; /* Standardgröße für das Logo */
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem; /* Deutlich kleinere Überschrift */
+                /* margin-bottom: 0.8rem; <-- Dieser wird entfernt */
+            }
+
+            .hero-header-content {
+                flex-direction: column; /* Auf mobilen Geräten untereinander stapeln */
+                align-items: center; /* Zentrieren */
+                gap: 0.5rem;
+                margin-bottom: 1.5rem; /* Abstand zum Absatz auf Mobile anpassen */
+            }
+
+            .hero-krone-logo {
+                max-width: 40px; /* Noch kleiner auf Mobilgeräten */
+            }
+
+            .hero p {
+                font-size: 0.9rem; /* Kleinere Unterüberschrift */
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* New Styles for Large Krone Logo in Hero Section */
+        .hero-large-krone {
+            position: absolute;
+            right: 2rem; /* Position from the right edge */
+            top: 50%; /* Center vertically */
+            transform: translateY(-50%); /* Adjust for true vertical centering */
+            max-width: 550px; /* Adjust size - for desktop */
+            width: auto;
+            height: auto;
+            z-index: 1; /* Place above video and crown background */
+            pointer-events: none; /* Allow interaction with elements behind it */
+        }
+
+        .hero-video {
+            width: 45%; /* Keep original width, logo will overlap if necessary */
+            max-width: 450px;
+            z-index: 0; /* Place video behind the large crown logo */
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding: 2rem 1rem;
+                min-height: auto;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 2rem;
+                padding: 0 1rem;
+                z-index: 2; /* Keep content on top */
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .hero-large-krone {
+                position: relative; /* Revert to relative positioning on mobile */
+                width: 50%; /* Smaller on mobile */
+                max-width: 150px; /* Max width for mobile */
+                margin: 1rem auto; /* Center horizontally and add some margin */
+                top: auto; /* Remove absolute positioning properties */
+                right: auto;
+                transform: none;
+                z-index: 0; /* No need for special z-index on mobile when relative */
+                pointer-events: auto; /* Restore default pointer events */
+            }
+
+            .hero-video {
+                width: 90%;
+                max-width: 350px;
+                margin: 2rem auto;
+                z-index: 0; /* Keep video behind content */
+            }
+
+            .hero-stat-number {
+                font-size: 1.5rem; /* Kleinere Zahl auf Mobile */
+            }
+
+            .hero-stat-text {
+                font-size: 0.8rem; /* Kleinere Schriftgröße für Text auf Mobile */
+            }
+
+            .hero-stat-item {
+                text-align: center; /* Zentriert den Text der Zahlen */
+            }
+        }
+
+        /* Seals Section Styles */
+        .seals-section {
+            padding: 2rem 0; /* Adjust padding as needed */
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .seals-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem; /* Space between seals */
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            margin-top: -8rem; /* Pull up a bit into the hero section visually */
+            position: relative; /* For z-index to work */
+            z-index: 5; /* Ensure it's above other elements if needed */
+        }
+
+        .seal-item {
+            background-color: #444444; /* Etwas dunkleres Grau für Dark Mode */
+            color: #ffffff; /* Weißer Text */
+            border: 2px solid #555555; /* Leichter Rand, um Abgrenzung zu schaffen */
+            border-radius: 50px; /* Stärker abgerundete Ecken für Pillenform */
+            padding: 0.5rem 1.2rem;
+            font-size: 0.8rem;
+            font-weight: 600; /* Etwas fetter für Lesbarkeit */
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            /* backdrop-filter: blur(5px); */ /* Entfernt, um klareres Design zu ermöglichen */
+            box-shadow: 
+                0 0 0 3px rgba(0, 191, 255, 0.1), /* Dezenter äußerer Ring */
+                0 5px 15px rgba(0, 0, 0, 0.4), /* Hauptschatten */
+                inset 0 2px 5px rgba(255, 255, 255, 0.1), /* Innenliegender Lichteffekt */
+                inset 0 -2px 5px rgba(0, 0, 0, 0.2); /* Innenliegender Schatteneffekt */
+            transition: all 0.3s ease;
+            cursor: default; /* Not clickable */
+        }
+
+        .seal-item:hover {
+            transform: translateY(-3px); /* Weniger starker Hover-Effekt */
+            box-shadow: 
+                0 0 0 3px rgba(0, 191, 255, 0.2), /* Stärkerer äußerer Ring */
+                0 8px 20px rgba(0, 0, 0, 0.6), /* Stärkerer Hauptschatten */
+                inset 0 3px 7px rgba(255, 255, 255, 0.15), /* Stärkerer Lichteffekt */
+                inset 0 -3px 7px rgba(0, 0, 0, 0.3); /* Stärkerer Schatteneffekt */
+            border-color: #00bfff; /* Border glow */
+        }
+
+        /* Responsive adjustments for Seals Section */
+        @media (max-width: 768px) {
+            .seals-section {
+                padding: 1rem 1rem; /* Adjust padding for mobile */
+            }
+            .seals-container {
+                gap: 0.8rem; /* Smaller gap on mobile */
+                margin-top: -6rem; /* Adjust pull up on mobile */
+            }
+            .seal-item {
+                padding: 0.4rem 1rem;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* Light Mode for Seals Section */
+        body.light-mode .seal-item {
+            background-color: #cccccc; /* Helles Grau für Light Mode */
+            color: #333333; /* Dunkler Text für Light Mode */
+            border: 2px solid #aaaaaa; /* Leichterer Rand */
+            box-shadow:
+                0 0 0 3px rgba(0, 191, 255, 0.1), /* Dezenter äußerer Ring */
+                0 5px 15px rgba(0, 0, 0, 0.2), /* Hauptschatten */
+                inset 0 2px 5px rgba(255, 255, 255, 0.4), /* Innenliegender Lichteffekt */
+                inset 0 -2px 5px rgba(0, 0, 0, 0.1); /* Innenliegender Schatteneffekt */
+        }
+
+        body.light-mode .seal-item:hover {
+            background-color: #bbbbbb; /* Noch heller im Hover-Zustand */
+            box-shadow: 
+                0 0 0 3px rgba(0, 191, 255, 0.2), /* Stärkerer äußerer Ring */
+                0 8px 20px rgba(0, 0, 0, 0.3), /* Stärkerer Hauptschatten */
+                inset 0 3px 7px rgba(255, 255, 255, 0.5), /* Stärkerer Lichteffekt */
+                inset 0 -3px 7px rgba(0, 0, 0, 0.15); /* Stärkerer Schatteneffekt */
+            border-color: #00bfff;
+        }
+
+        /* Section Styles */
+    </style>
+</head>
+<body>
+    <!-- Content Wrapper -->
+    <div class="content-wrapper" style="position: relative; z-index: 1;">
+        <!-- Crown Background -->
+        <div class="crown-background-fixed-img" style="opacity: 0.05;"></div>
+        <!-- Header -->
+        <header class="header">
+            <nav class="nav-container">
+                <a href="#" class="logo">Dominion Voice AI</a>
+                <ul class="nav-menu">
+                    <li><a href="#start">Home</a></li>
+                    <li><a href="#demo">Demo</a></li>
+                    <li><a href="#fuer-wen">Für wen?</a></li>
+                    <li><a href="#vorteile">Vorteile</a></li>
+                    <li><a href="#funktionen">So funktioniert's</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="start" class="hero">
+            <div class="hero-content">
+                <h1>Ihre Stimme.<br>Unsere Intelligenz.</h1>
+                <p>Individuelle AI Voice Agent Lösungen für ihr Unternehmen</p>
+                <div class="cta-buttons">
+                    <a href="#demo" class="btn btn-primary">Demo starten</a>
+                    <a href="#kontakt" class="btn btn-secondary">Kontakt aufnehmen</a>
+                </div>
+                <!-- Neuer Bereich für Zahlen und Text -->
+                <div class="hero-stats">
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-number">100%</span>
+                        <p class="hero-stat-text">Automatisierung</p>
+                    </div>
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-number">24/7</span>
+                        <p class="hero-stat-text">Verfügbarkeit</p>
+                    </div>
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-number">99%</span>
+                        <p class="hero-stat-text">Zuverlässigkeit</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Krone Logo here -->
+            <img src="Krone Logo.png" alt="Krone Logo" class="hero-large-krone">
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="audiofilm.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <!-- Seals Section -->
+        <section class="seals-section">
+            <div class="seals-container fade-in">
+                <div class="seal-item">Made in Germany</div>
+                <div class="seal-item">DSGVO Konform</div>
+                <div class="seal-item">EU AI Act Konform</div>
+            </div>
+        </section>
+
+        <!-- Demo Section (Verschoben nach oben) -->
+        <section id="demo" class="section">
+            <h2 class="fade-in">Hör selbst, wie dein Voice Agent klingt</h2>
+            <p class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto; color: rgba(255, 255, 255, 0.8);">
+                Ob Zahnarztpraxis, Werkstatt oder Hotel – so klingt moderne, automatisierte Kommunikation.
+            </p>
+
+            <div class="demo-content-wrapper">
+                <div class="demo-audio-visual fade-in">
+                    <h3>🎧 Demo: Zahnarztpraxis – Terminvergabe</h3>
+                    <div class="audio-player-container">
+                        <audio controls>
+                            <source src="demo.wav" type="audio/wav">
+                            Dein Browser unterstützt den Audio-Player nicht.
+                        </audio>
+                    </div>
+                    <div class="dialog-bubble-container">
+                        <div class="bubble user-bubble" data-start-time="0.0">
+                            <span class="icon">🧑</span> Hallo, ich hätte gern einen Termin.
+                        </div>
+                        <div class="bubble agent-bubble" data-start-time="2.0">
+                            <span class="icon">🤖</span> Natürlich! Für welchen Wochentag passt es Ihnen?
+                        </div>
+                        <div class="bubble user-bubble" data-start-time="4.0">
+                            <span class="icon">🧑</span> Am Mittwochvormittag.
+                        </div>
+                        <div class="bubble agent-bubble" data-start-time="6.0">
+                            <span class="icon">🤖</span> Ich habe um 10:30 Uhr einen Termin frei. Passt das?
+                        </div>
+                    </div>
+                    <p class="demo-explanation">🧠 Der Agent fragt automatisch nach Namen, Anliegen und Wunschzeit – und trägt den Termin direkt ein.</p>
+                </div>
+
+                <div class="demo-cta-live fade-in">
+                    <h3>Willst du hören, wie dein eigener Agent klingen könnte?</h3>
+                    <p>📲 Ruf unsere Live-Demo an – rund um die Uhr verfügbar.</p>
+                    <a href="tel:+4982190579002" class="btn btn-primary btn-call-demo">📞 Jetzt anrufen: +49 821 90579002</a>
+                    <p class="no-selling-note">Kein Verkauf – nur zum Test</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Für wen? -->
+        <section id="fuer-wen" class="section">
+            <h2 class="fade-in">Für wen ist Dominion Voice AI?</h2>
+            <p class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto; color: rgba(255, 255, 255, 0.8);">
+                Unsere Voice Agents sind für Unternehmen da, die telefonische Kundenkommunikation optimieren möchten – von der Arztpraxis bis zum Autohaus.<br>
+                Ob es um Terminvergaben, Rückfragen oder Informationsverteilung geht:<br>
+                Dominion Voice AI automatisiert – Sie profitieren.
+            </p>
+
+            <div class="target-audience-grid">
+                <!-- Arztpraxen -->
+                <div class="target-audience-card fade-in">
+                    <div class="card-icon"><i class="fas fa-stethoscope"></i></div>
+                    <h3>Arztpraxen</h3>
+                    <ul>
+                        <li>Automatisierte Terminvereinbarung – 24/7 erreichbar</li>
+                        <li>Antworten auf häufige Patientenfragen (z. B. Öffnungszeiten, Urlaube)</li>
+                        <li>Weiterleitung bei Notfällen oder Rezeptanfragen</li>
+                    </ul>
+                    <p class="benefit-text">✅ DSGVO-konform mit sensiblen Patientendaten</p>
+                </div>
+
+                <!-- Werkstätten & Autohäuser -->
+                <div class="target-audience-card fade-in">
+                    <div class="card-icon"><i class="fas fa-car-side"></i></div>
+                    <h3>Werkstätten & Autohäuser</h3>
+                    <ul>
+                        <li>Annahme von Anfragen zu Reifenwechsel, HU/AU, Rückrufen</li>
+                        <li>Automatisierte Terminvergabe im Kalender</li>
+                        <li>Anrufweiterleitung bei technischen Fragen</li>
+                    </ul>
+                    <p class="benefit-text">✅ Kein verpasster Anruf mehr – auch bei Stoßzeiten</p>
+                </div>
+
+                <!-- Hotels & Dienstleister -->
+                <div class="target-audience-card fade-in">
+                    <div class="card-icon"><i class="fas fa-hotel"></i></div>
+                    <h3>Hotels & Dienstleister</h3>
+                    <ul>
+                        <li>Buchungsanfragen automatisiert entgegennehmen</li>
+                        <li>Check-in/Check-out-Zeiten & Hotelinfos beantworten</li>
+                        <li>Rückrufe bei besonderen Anforderungen organisieren</li>
+                    </ul>
+                    <p class="benefit-text">✅ Internationale Sprachoptionen möglich</p>
+                </div>
+
+                <!-- Kundensupport & Hotlines -->
+                <div class="target-audience-card fade-in">
+                    <div class="card-icon"><i class="fas fa-headset"></i></div>
+                    <h3>Kundensupport & Hotlines</h3>
+                    <ul>
+                        <li>Erste Anrufebene automatisiert (FAQs, Anliegen-Erfassung)</li>
+                        <li>Kategorisierung und Weiterleitung an zuständige Abteilungen</li>
+                        <li>Rückrufoption oder SMS-Bestätigung direkt im Gespräch</li>
+                    </ul>
+                    <p class="benefit-text">✅ Spart Zeit, reduziert Wartezeiten und steigert Kundenzufriedenheit</p>
+                </div>
+
+                <!-- Taxiunternehmen & Fahrdienste -->
+                <div class="target-audience-card fade-in">
+                    <div class="card-icon"><i class="fas fa-taxi"></i></div>
+                    <h3>Taxiunternehmen & Fahrdienste</h3>
+                    <ul>
+                        <li>Buchungen und Fahranfragen direkt über den Voice Agent</li>
+                        <li>Fahrerzuteilung, Abholzeiten und Preise automatisch klären</li>
+                        <li>Weiterleitung bei Sonderwünschen oder Notfällen</li>
+                    </ul>
+                    <p class="benefit-text">✅ Weniger entgangene Anrufe – mehr gebuchte Fahrten ohne Personalbindung</p>
+                </div>
+
+                <!-- Immobilienunternehmen & Hausverwaltungen -->
+                <div class="target-audience-card fade-in">
+                    <div class="card-icon"><i class="fas fa-building"></i></div>
+                    <h3>Immobilienunternehmen & Hausverwaltungen</h3>
+                    <ul>
+                        <li>Mietanfragen, Besichtigungstermine & Rückrufe automatisiert entgegennehmen</li>
+                        <li>Anliegen wie Reparaturen, Hausordnungen oder Verfügbarkeiten erfassen</li>
+                        <li>Weiterleitung an zuständige Makler oder Hausverwalter</li>
+                    </ul>
+                    <p class="benefit-text">✅ Spart Zeit im Tagesgeschäft – und sorgt für professionellen Erstkontakt</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- New CTA Section -->
+        <section class="section cta-below-target-audience">
+            <p class="fade-in cta-text">👉 Nicht sicher, ob ein Voice Agent zu Ihrem Unternehmen passt?<br>Finden Sie es heraus – mit unserem kostenlosen Erstgespräch.</p>
+            <a href="#kontakt" class="btn btn-primary fade-in">Jetzt Beratung anfordern</a>
+        </section>
+
+        <!-- Benefits Section (Verschoben) -->
+        <section id="vorteile" class="section">
+            <h2 class="fade-in">Warum Unternehmen auf Dominion Voice AI setzen – und nie zurück wollen</h2>
+            <div class="benefits-grid">
+                <!-- Immer erreichbar -->
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Immer erreichbar – 24/7 statt verpasste Chancen</h3>
+                    <ul>
+                        <li>Nie wieder "Sie haben einen Anruf verpasst".</li>
+                        <li>Ihr Voice Agent nimmt rund um die Uhr Gespräche entgegen – auch an Wochenenden & Feiertagen.</li>
+                    </ul>
+                    <p class="benefit-result">💡 Ergebnis: Mehr Buchungen, weniger Frust, bessere Kundenbindung.</p>
+                </div>
+
+                <!-- Spürbare Entlastung -->
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                    <h3>Spürbare Entlastung für Ihr Team</h3>
+                    <ul>
+                        <li>Keine gestressten Empfangskräfte mehr.</li>
+                        <li>Der Voice Agent filtert Anfragen, klärt Standardfragen & übergibt nur wirklich wichtige Gespräche.</li>
+                    </ul>
+                    <p class="benefit-result">💡 Ergebnis: Ihre Mitarbeitenden fokussieren sich auf das Wesentliche.</p>
+                </div>
+
+                <!-- Mehr Struktur, mehr Umsatz -->
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Mehr Struktur, mehr Umsatz, weniger Chaos</h3>
+                    <ul>
+                        <li>Automatisierte Anrufverarbeitung bedeutet: klare Prozesse, keine Wartezeiten, keine Doppelbuchungen.</li>
+                    </ul>
+                    <p class="benefit-result">💡 Ergebnis: Höhere Effizienz im Alltag = mehr Umsatz mit gleichen Ressourcen.</p>
+                </div>
+
+                <!-- DSGVO-konform -->
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon"><i class="fas fa-lock"></i></div>
+                    <h3>DSGVO-konform – von Anfang bis Ende</h3>
+                    <ul>
+                        <li>Hosting in Deutschland, verschlüsselte Verarbeitung, klarer AVV – damit Sie rechtskonform arbeiten.</li>
+                    </ul>
+                    <p class="benefit-result">💡 Ergebnis: Sicherheit für Sie & Ihre Kunden – ohne Datenschutzrisiken.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Numbers Section -->
+        <section class="section numbers-section">
+            <div class="numbers-grid">
+                <div class="number-item fade-in">
+                    24/7
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">verfügbar – <br>keine Pausen, keine Feiertage</p>
+                </div>
+                <div class="number-item fade-in">
+                    > 90%
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">Kundenzufriedenheit im ersten Testlauf</p>
+                </div>
+                <div class="number-item fade-in">
+                    50%
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">Weniger Aufleger</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section (War vorher hier) -->
+        <section id="funktionen" class="section">
+            <h2 class="fade-in">Das kann dein Voice Agent</h2>
+            <p class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto; color: rgba(255, 255, 255, 0.8);">Interagiere mit den Schlüssel‑Funktionen – klick dich durch, um zu sehen, wie ein echter Agent klingt und wirkt.</p>
+            <div class="features-container">
+                <div class="features-tabs">
+                    <div class="tab-item active fade-in" data-tab="tab-terminmanagement">
+                        <div class="tab-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <div class="tab-title">Terminmanagement</div>
+                    </div>
+                    <div class="tab-item fade-in" data-tab="tab-datenerfassung">
+                        <div class="tab-icon"><i class="fas fa-receipt"></i></div>
+                        <div class="tab-title">Datenerfassung</div>
+                    </div>
+                    <div class="tab-item fade-in" data-tab="tab-weiterleitung">
+                        <div class="tab-icon"><i class="fas fa-sync-alt"></i></div>
+                        <div class="tab-title">Weiterleitung</div>
+                    </div>
+                    <div class="tab-item fade-in" data-tab="tab-kontextverstaendnis">
+                        <div class="tab-icon"><i class="fas fa-comments"></i></div>
+                        <div class="tab-title">Kontextverständnis</div>
+                    </div>
+                    <div class="tab-item fade-in" data-tab="tab-benachrichtigungen">
+                        <div class="tab-icon"><i class="fas fa-bell"></i></div>
+                        <div class="tab-title">Benachrichtigungen</div>
+                    </div>
+                    <div class="tab-item fade-in" data-tab="tab-live-demo">
+                        <div class="tab-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="tab-title">Live-Demo anrufen</div>
+                    </div>
+                </div>
+                <div class="features-content">
+                    <div id="tab-terminmanagement" class="content-slide active fade-in">
+                        <div class="slide-header">
+                            <div class="slide-icon"><i class="fas fa-calendar-alt"></i></div>
+                            <h3>Terminvergabe – vollautomatisch</h3>
+                        </div>
+                        <p>Unser Agent prüft Verfügbarkeit, plant direkt in deinen Kalender – 24/7, ohne Rückfragen.<br><span class="subtext">Nie wieder Warteschleifen</span></p>
+                        <div class="slide-visual">
+                            <!-- Placeholder for screenshot/animation -->
+                            <img src="https://via.placeholder.com/600x400.png?text=Kalender-Screenshot+oder+Animation" alt="Kalender-Screenshot" style="width:100%; height:auto; border-radius:10px; margin-top: 1rem;">
+                        </div>
+                        <a href="#demo" class="btn btn-primary slide-cta">Jetzt Termin testen</a>
+                    </div>
+                    <div id="tab-datenerfassung" class="content-slide fade-in">
+                        <div class="slide-header">
+                            <div class="slide-icon"><i class="fas fa-receipt"></i></div>
+                            <h3>Datenerfassung – präzise & DSGVO-konform</h3>
+                        </div>
+                        <p>Der Agent erfasst alle relevanten Daten strukturiert während des Gesprächs – sicher und vollständig.<br><span class="subtext">Fehlerfreie Dokumentation</span></p>
+                        <div class="slide-visual">
+                            <!-- Placeholder for screenshot/animation -->
+                            <img src="https://via.placeholder.com/600x400.png?text=Datenerfassung+Screenshot" alt="Datenerfassung" style="width:100%; height:auto; border-radius:10px; margin-top: 1rem;">
+                        </div>
+                        <a href="#kontakt" class="btn btn-primary slide-cta">Mehr über Datenerfassung</a>
+                    </div>
+                    <div id="tab-weiterleitung" class="content-slide fade-in">
+                        <div class="slide-header">
+                            <div class="slide-icon"><i class="fas fa-sync-alt"></i></div>
+                            <h3>Intelligente Weiterleitung – kein Anruf geht verloren</h3>
+                        </div>
+                        <p>Bei dringenden oder speziellen Anliegen leitet der Agent das Gespräch sofort an die richtige Person weiter.<br><span class="subtext">Immer ansprechbar</span></p>
+                        <div class="slide-visual">
+                            <!-- Placeholder for screenshot/animation -->
+                            <img src="https://via.placeholder.com/600x400.png?text=Weiterleitung+Animation" alt="Weiterleitung" style="width:100%; height:auto; border-radius:10px; margin-top: 1rem;">
+                        </div>
+                        <a href="#kontakt" class="btn btn-primary slide-cta">Details zur Weiterleitung</a>
+                    </div>
+                    <div id="tab-kontextverstaendnis" class="content-slide fade-in">
+                        <div class="slide-header">
+                            <div class="slide-icon"><i class="fas fa-comments"></i></div>
+                            <h3>Kontextverständnis – natürlich & flüssig</h3>
+                        </div>
+                        <p>Dein Voice Agent versteht den Gesprächskontext, fragt nach bei Unklarheiten und reagiert flexibel.<br><span class="subtext">Echte Unterhaltungen</span></p>
+                        <div class="slide-visual">
+                            <!-- Placeholder for screenshot/animation -->
+                            <img src="https://via.placeholder.com/600x400.png?text=Kontextverstaendnis+Animation" alt="Kontextverständnis" style="width:100%; height:auto; border-radius:10px; margin-top: 1rem;">
+                        </div>
+                        <a href="#kontakt" class="btn btn-primary slide-cta">Wie das funktioniert</a>
+                    </div>
+                    <div id="tab-benachrichtigungen" class="content-slide fade-in">
+                        <div class="slide-header">
+                            <div class="slide-icon"><i class="fas fa-bell"></i></div>
+                            <h3>Automatische Benachrichtigungen – alles im Blick</h3>
+                        </div>
+                        <p>Nach jedem wichtigen Vorgang sendet der Agent automatisch Bestätigungen oder Infos per SMS.<br><span class="subtext">Nie wieder Unsicherheit</span></p>
+                        <div class="slide-visual">
+                            <!-- Placeholder for screenshot/animation -->
+                            <img src="https://via.placeholder.com/600x400.png?text=Benachrichtigungen+Screenshot" alt="Benachrichtigungen" style="width:100%; height:auto; border-radius:10px; margin-top: 1rem;">
+                        </div>
+                        <a href="#kontakt" class="btn btn-primary slide-cta">Benachrichtigungen im Detail</a>
+                    </div>
+                    <div id="tab-live-demo" class="content-slide fade-in">
+                        <div class="slide-header">
+                            <div class="slide-icon"><i class="fas fa-phone-alt"></i></div>
+                            <h3>Live-Demo anrufen – überzeuge dich selbst</h3>
+                        </div>
+                        <p>Erlebe den Voice Agent in Aktion! Rufe einfach an und höre, wie intelligent automatisierte Kommunikation klingt.<br><span class="subtext">Dein Erlebnis zählt</span></p>
+                        <div class="slide-visual">
+                            <!-- Placeholder for screenshot/animation -->
+                            <img src="https://via.placeholder.com/600x400.png?text=Live-Demo+Anruf" alt="Live-Demo Anruf" style="width:100%; height:auto; border-radius:10px; margin-top: 1rem;">
+                        </div>
+                        <a href="tel:+4982190579002" class="btn btn-primary slide-cta">Jetzt anrufen: +49 821 90579002</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA & Social Proof -->
+            <div class="cta-features-section fade-in">
+                <p class="cta-features-text">Bereit, den Unterschied zu hören?</p>
+                <a href="#kontakt" class="btn btn-primary">Demo anfordern</a>
+                <p class="cta-features-reason">Nutze das Potenzial deines Voice Agents voll aus – live erleben & direkt starten.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="kontakt" class="section">
+            <h2 class="fade-in contact-title">🚀 Lass uns über deinen Voice Agent sprechen</h2>
+            <p class="fade-in contact-subtitle">Fülle das Formular aus – wir melden uns persönlich mit einer passgenauen Lösung für dein Unternehmen.</p>
+
+            <div class="contact-container fade-in">
+                <form action="https://formspree.io/f/manjoynk" method="POST" enctype="multipart/form-data">
+
+                    <!-- 🔹 NAME -->
+                    <div class="form-group">
+                        <label for="name">👤 Name*</label>
+                        <input type="text" id="name" name="name" placeholder="Dein Name" required>
+                    </div>
+
+                    <!-- 🔹 UNTERNEHMEN -->
+                    <div class="form-group">
+                        <label for="unternehmen">🏢 Unternehmen (optional)</label>
+                        <input type="text" id="unternehmen" name="unternehmen" placeholder="z. B. Praxis Dr. Müller">
+                    </div>
+
+                    <!-- 🔹 EMAIL -->
+                    <div class="form-group">
+                        <label for="email">📧 E-Mail-Adresse*</label>
+                        <input type="email" id="email" name="email" placeholder="dein.name@firma.de" required>
+                    </div>
+
+                    <!-- 🔹 TELEFON -->
+                    <div class="form-group">
+                        <label for="telefon">📞 Telefonnummer (optional)</label>
+                        <input type="tel" id="telefon" name="telefon" placeholder="Für Rückfragen oder Rückruf">
+                    </div>
+
+                    <!-- 🔹 BRANCHE -->
+                    <div class="form-group">
+                        <label for="branche">📂 Branche / Typ</label>
+                        <select id="branche" name="branche">
+                            <option value="Bitte auswählen">Bitte auswählen</option>
+                            <option value="Arztpraxis">Arztpraxis</option>
+                            <option value="Autowerkstatt">Autowerkstatt</option>
+                            <option value="Hotel / Gastro">Hotel / Gastro</option>
+                            <option value="Taxiunternehmen">Taxiunternehmen</option>
+                            <option value="Immobilien">Immobilien</option>
+                            <option value="Sonstiges">Sonstiges</option>
+                        </select>
+                    </div>
+
+                    <!-- 🔹 AUTOMATISIERUNGSZIEL -->
+                    <div class="form-group">
+                        <label for="automatisierung">⚙️ Was möchtest du automatisieren?*</label>
+                        <input type="text" id="automatisierung" name="automatisierung" placeholder="z. B. Terminvergabe, FAQ, Weiterleitung…" required>
+                    </div>
+
+                    <!-- 🔹 NACHRICHT -->
+                    <div class="form-group">
+                        <label for="nachricht">💬 Nachricht / Anforderung*</label>
+                        <textarea id="nachricht" name="nachricht" rows="5" placeholder="Beschreibe deine individuelle Herausforderung…" maxlength="500" required></textarea>
+                        <div class="char-count">0 / 500 Zeichen</div>
+                    </div>
+
+                    <!-- 🔹 DATEI-UPLOAD -->
+                    <div class="form-group">
+                        <label for="file">📎 Datei anhängen (optional)</label>
+                        <input type="file" id="file" name="anhang">
+                        <small class="field-description">z. B. Kalender-Screenshot, Gesprächsfluss (max. 5 MB)</small>
+                    </div>
+
+                    <!-- 🔐 DATENSCHUTZ -->
+                    <div class="form-group privacy-consent-group">
+                        <input type="checkbox" id="privacy-consent" name="datenschutz" required>
+                        <label for="privacy-consent">Ich stimme der Verarbeitung meiner Daten gemäß der <a href="Infos/datenschutzerklaerung.html" target="_blank">Datenschutzerklärung</a> zu.</label>
+                    </div>
+
+                    <!-- 🔁 FORMSPREE OPTIONS -->
+                    <input type="hidden" name="_subject" value="Neue Anfrage über dominionvoice-ai.de">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_redirect" value="https://dominionvoice-ai.de/danke.html">
+
+                    <!-- 🔘 ABSENDEN -->
+                    <button type="submit" class="btn btn-primary btn-contact">📩 Jetzt Anfrage senden</button>
+                    <div id="form-feedback" class="form-feedback"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="Logo Dominion Voice AI.PNG" alt="Dominion Voice AI Logo">
+                    <img src="Krone Logo.png" alt="Krone Logo" class="footer-krone-logo">
+                </div>
+                <div class="footer-columns">
+                    <div class="footer-column">
+                        <h3 class="footer-column-title">Navigation</h3>
+                        <ul class="footer-links">
+                            <li><a href="#start">Home</a></li>
+                            <li><a href="#demo">Demo</a></li>
+                            <li><a href="#fuer-wen">Für wen?</a></li>
+                            <li><a href="#vorteile">Vorteile</a></li>
+                            <li><a href="#funktionen">So funktioniert's</a></li>
+                            <li><a href="#kontakt">Kontakt</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-column-title">Socials</h3>
+                        <ul class="footer-links social-links">
+                            <li><a href="https://www.linkedin.com/in/yannik-huber-81bbb7331/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                            <li><a href="https://www.instagram.com/dominionvoice.ai/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                            <li><a href="https://youtube.com/@dominionvoice-ai?si=S1T2kMAEPdDwzHLI" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-column-title">Kontakt</h3>
+                        <ul class="footer-links">
+                            <li><a href="mailto:kontakt@dominionvoice-ai.de">kontakt@dominionvoice-ai.de</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-column-title">Rechtliches</h3>
+                        <ul class="footer-links">
+                            <li><a href="impressum.html" target="_blank">Impressum</a></li>
+                            <li><a href="agb.html" target="_blank">AGB</a></li>
+                            <li><a href="datenschutzerklaerung.html" target="_blank">Datenschutz</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="copyright">&copy; 2025 Dominion Voice AI. Alle Rechte vorbehalten.</p>
+            </div>
+        </footer>
+    </div>
+    <!-- Modal Overlay -->
+    <div id="videoModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="modalVideoTitle"></h3>
+            <video id="modalVideo" controls loop playsinline>
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        // document.querySelector('form').addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     const formFeedback = document.getElementById('form-feedback');
+        //     formFeedback.textContent = 'Vielen Dank! Wir melden uns innerhalb von 24 Stunden mit deinem persönlichen Vorschlag.';
+        //     // You might want to clear the form fields here
+        //     this.reset(); // Clear form fields after submission
+        // });
+
+        // Live Character Count for 'Nachricht' textarea
+        const nachrichtTextarea = document.getElementById('nachricht');
+        const charCountDisplay = document.querySelector('.char-count');
+
+        if (nachrichtTextarea && charCountDisplay) {
+            const maxLength = nachrichtTextarea.getAttribute('maxlength');
+            charCountDisplay.textContent = `0 / ${maxLength} Zeichen`;
+
+            nachrichtTextarea.addEventListener('input', function() {
+                const currentLength = this.value.length;
+                charCountDisplay.textContent = `${currentLength} / ${maxLength} Zeichen`;
+            });
+        }
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            const isLightMode = document.body.classList.contains('light-mode');
+
+            if (isLightMode) {
+                header.style.background = '#ffffff'; // Bleibt im Light Mode immer weiß
+            } else {
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(0, 0, 0, 0.98)';
+                } else {
+                    header.style.background = 'rgba(0, 0, 0, 0.95)';
+                }
+            }
+        });
+
+        const toggleSwitch = document.getElementById('checkbox');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme) {
+            document.body.classList.add(currentTheme);
+            if (currentTheme === 'light-mode') {
+                toggleSwitch.checked = true;
+            }
+        }
+
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.body.classList.add('light-mode');
+                localStorage.setItem('theme', 'light-mode');
+            } else {
+                document.body.classList.remove('light-mode');
+                localStorage.setItem('theme', 'dark-mode');
+            }
+        }
+
+        toggleSwitch.addEventListener('change', switchTheme);
+
+        // Features Tab Logic
+        const tabItems = document.querySelectorAll('.tab-item');
+        const contentSlides = document.querySelectorAll('.content-slide');
+        const audioCue = new Audio('path/to/your/sound.mp3'); // Optional: Path to your sound file
+
+        tabItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all tab items and content slides
+                tabItems.forEach(t => t.classList.remove('active'));
+                contentSlides.forEach(s => s.classList.remove('active'));
+
+                // Add active class to the clicked tab item
+                this.classList.add('active');
+
+                // Get the data-tab attribute to find the corresponding content slide
+                const targetTab = this.getAttribute('data-tab');
+                const targetSlide = document.getElementById(targetTab);
+
+                // Add active class to the target content slide
+                if (targetSlide) {
+                    targetSlide.classList.add('active');
+                    // Optional: Play sound cue
+                    // audioCue.play();
+                }
+            });
+        });
+
+        // Initialize: show the first tab content by default
+        if (tabItems.length > 0 && contentSlides.length > 0) {
+            tabItems[0].classList.add('active');
+            contentSlides[0].classList.add('active');
+        }
+
+        // Demo Section Audio-Bubble Synchronization
+        const demoAudio = document.querySelector('.demo-audio-visual audio');
+        const speechBubbles = document.querySelectorAll('.dialog-bubble-container .bubble');
+
+        if (demoAudio && speechBubbles.length > 0) {
+            // Function to update active bubble
+            function updateActiveBubble() {
+                const currentTime = demoAudio.currentTime;
+                speechBubbles.forEach(bubble => {
+                    const startTime = parseFloat(bubble.getAttribute('data-start-time'));
+                    // Simple logic: if current time is greater than or equal to start time
+                    // and less than the next bubble's start time (or end of audio for last bubble)
+                    if (currentTime >= startTime) {
+                        bubble.classList.add('active');
+                    } else {
+                        bubble.classList.remove('active');
+                    }
+                });
+            }
+
+            // Listen for time updates on the audio
+            demoAudio.addEventListener('timeupdate', updateActiveBubble);
+
+            // Reset bubbles when audio ends or is paused/restarted
+            demoAudio.addEventListener('ended', () => {
+                speechBubbles.forEach(bubble => bubble.classList.remove('active'));
+            });
+            demoAudio.addEventListener('pause', () => {
+                // Optionally keep the last active bubble, or remove all
+                // For now, let's keep it simple and remove all on pause
+                // speechBubbles.forEach(bubble => bubble.classList.remove('active'));
+            });
+            demoAudio.addEventListener('seeking', () => {
+                // Update bubbles immediately when user seeks
+                updateActiveBubble();
+            });
+
+            // Initial update in case audio starts playing automatically or is already at a certain time
+            updateActiveBubble();
+        }
+
+    </script>
+</body>
+</html>
