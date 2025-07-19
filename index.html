@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <!-- Basis -->
+  <title>DominionVoice AI – KI-gestützte Sprach­­analyse</title>
+  <meta name="description" content="Unsere KI verwandelt Audio in wertvolle Insights für Kunden- und Markt­forschung.">
+  <link rel="canonical" href="https://dominionvoice-ai.de/">
+  <!-- Robots-Steuerung (Indexierung, Snippets) -->
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <!-- Open Graph & Twitter -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="DominionVoice AI">
+  <meta property="og:description" content="KI-gestützte Sprach­­analyse …">
+  <meta property="og:url"         content="https://dominionvoice-ai.de/">
+  <meta property="og:image"       content="https://dominionvoice-ai.de/assets/og-cover.webp">
+  <meta name="twitter:card"       content="summary_large_image">
+  <!-- Performance -->
+  <link rel="preload" as="image" href="/assets/hero.webp" fetchpriority="high">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="logo_override.css">
+  <!-- ConsentManager & Analytics (falls benötigt) -->
+  <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/5406eba592030.js" data-cmp-host="d.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="0"></script>
+
+  <script type="application/ld+json">
+  {
+   "@context":"https://schema.org",
+   "@type":"Organization",
+   "name":"DominionVoice AI",
+   "url":"https://dominionvoice-ai.de",
+   "logo":"https://dominionvoice-ai.de/assets/logo.svg",
+   "contactPoint":[{
+     "@type":"ContactPoint",
+     "telephone":"+49-221-123456",
+     "contactType":"sales"
+   }]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+   "@context":"https://schema.org",
+   "@type":"WebSite",
+   "url":"https://dominionvoice-ai.de",
+   "potentialAction":{
+     "@type":"SearchAction",
+     "target":"https://dominionvoice-ai.de/search?q={search_term_string}",
+     "query-input":"required name=search_term_string"
+   }
+  }
+  </script>
+  <style>
+    /* Mobile Anpassung für das VAPI Widget */
+    @media (max-width: 600px) {
+      vapi-widget {
+        --vapi-widget-width: 92vw;
+        --vapi-widget-max-width: 340px;
+        --vapi-widget-min-width: 180px;
+        --vapi-widget-border-radius: 16px;
+        --vapi-widget-bottom: 12px;
+        --vapi-widget-right: 8px;
+        font-size: 0.95rem;
+      }
+    }
+    vapi-widget {
+      z-index: 99999 !important;
+    }
+    .kpi-number {
+      font-size: 2.1rem !important;
+      font-weight: 600 !important;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+    <!-- Content Wrapper -->
+    <div class="content-wrapper" style="position: relative; z-index: 1;">
+    
+        <!-- Header -->
+        <header class="header">
+            <nav class="nav-container" aria-label="Hauptnavigation">
+                <a href="#" class="logo">Dominion Voice AI</a>
+                <button class="hamburger-menu" aria-label="Navigation öffnen oder schließen" aria-controls="main-navigation" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                <ul class="nav-menu" id="main-navigation">
+                    <li><a href="#start">Home</a></li>
+                    <li><a href="#demo">Demo</a></li>
+                    <li><a href="#fuer-wen">Für wen?</a></li>
+                    <li><a href="#vorteile">Vorteile</a></li>
+                    <li><a href="#funktionen">So funktioniert's</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+          <article itemscope itemtype="https://schema.org/Article">
+            <h1 itemprop="headline">Warum INP jetzt wichtiger als FID ist</h1>
+            <!-- Hier kann später ein echter Artikeltext stehen -->
+          </article>
+
+          <!-- Hero Section -->
+          <section id="start" class="hero fade-in">
+            <div class="hero-content">
+                <h1 class="fade-in">Ihre Stimme.<br>Unsere Intelligenz.</h1>
+                <p class="subtitle-hero fade-in" style="font-size: 1.45rem; font-weight: 500; color: #ffe066; text-shadow: 0 2px 12px rgba(0,0,0,0.25); margin-bottom: 1.5rem; margin-top: 0.5rem; letter-spacing: 0.01em;">
+                    Intelligente <span style="color:#fff; background: linear-gradient(90deg,#ffd700 30%,#fffbe6 100%); border-radius: 0.4em; padding: 0.08em 0.4em; font-weight: 700;">AI Voice Agenten</span> für Ihr Unternehmen<br>
+                    <span style="color:#fff; font-weight:600; display:inline-block; margin-top:0.15em;">spezialisiert, professionell & zuverlässig.</span>
+                    <span style="font-size:1.05rem; color:#fffbe6; opacity:0.85; display:block; margin-top:0.4em;">Automatisieren Sie Ihre Kundenkommunikation und erleben Sie den Unterschied.</span>
+                </p>
+                <div class="seals-container fade-in">
+                    <span class="seal-item"><img src="src/assets/images/gold-seal.png" alt="Goldenes Siegel: DSGVO-konform" class="seal-icon"> DSGVO-konform</span>
+                    <span class="seal-item"><img src="src/assets/images/gold-seal.png" alt="Goldenes Siegel: EU AI Act Konform" class="seal-icon"> EU AI Act Konform</span>
+                    <span class="seal-item"><img src="src/assets/images/gold-seal.png" alt="Goldenes Siegel: Made in Germany" class="seal-icon"> Made in Germany</span>
+                </div>
+                <div class="cta-buttons fade-in">
+                    <a href="#demo" class="btn btn-primary fade-in">Jetzt Anrufen</a>
+                    <a href="#kontakt" class="btn btn-secondary fade-in">Kontakt aufnehmen</a>
+                    <a href="#fuer-wen" class="btn btn-tertiary fade-in">Mehr erfahren</a>
+                </div>
+            </div>
+          </section>
+
+          <!-- Demo Section (Verschoben nach oben) -->
+          <section id="demo" class="section fade-in">
+            <h2 class="fade-in">Hör selbst, wie dein Voice Agent klingt</h2>
+            <p class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto; color: rgba(255, 255, 255, 0.8);">
+                Verabschieden Sie sich vom Telefonstress. <br>Dominion übernimmt – 24/7, zuverlässig, menschlich.
+            </p>
+
+            <div class="demo-phone-slider-wrapper">
+                <button class="phone-slider-arrow left" aria-label="Vorheriges Handy anzeigen" type="button"><span>&#8592;</span></button>
+                <div class="demo-phone-slider">
+                    <div class="demo-phone-mockup phone-slide active" data-slide="arzt">
+                        <div class="phone-frame">
+                            <div class="phone-notch"></div>
+                            <div class="phone-screen">
+                                <div class="phone-statusbar">
+                                    <span class="phone-signal"><span class="wifi"></span></span>
+                                    <span class="phone-battery"><span class="battery"></span><span class="battery-level"></span><span class="battery-tip"></span></span>
+                                </div>
+                                <div class="phone-content-vertical">
+                                    <div class="phone-call-title">Live Call – Arztpraxis</div>
+                                    <div class="phone-wave-animation">
+                                        <span class="wave wave1"></span>
+                                        <span class="wave wave2"></span>
+                                        <span class="wave wave3"></span>
+                                        <span class="wave wave4"></span>
+                                        <span class="wave wave5"></span>
+                                    </div>
+                                    <div class="phone-keypad">
+                                        <div class="phone-key"><span class="key-label">1</span></div>
+                                        <div class="phone-key"><span class="key-label">2</span><span class="key-sub"></span></div>
+                                        <div class="phone-key"><span class="key-label">3</span><span class="key-sub"></span></div>
+                                        <div class="phone-key"><span class="key-label">4</span><span class="key-sub"></span></div>
+                                        <div class="phone-key"><span class="key-label">5</span><span class="key-sub"></span></div>
+                                        <div class="phone-key"><span class="key-label">6</span><span class="key-sub"></span></div>
+                                        <div class="phone-key"><span class="key-label">7</span><span class="key-sub"></span></div>
+                                        <div class="phone-key"><span class="key-label">8</span><span class="key-sub"></span></div>
+                                        <div class="phone-key"><span class="key-label">9</span><span class="key-sub"></span></div>
+                                        <div class="phone-key"><span class="key-label">*</span></div>
+                                        <div class="phone-key"><span class="key-label">0</span><span class="key-sub">+</span></div>
+                                        <div class="phone-key"><span class="key-label">#</span></div>
+                                    </div>
+                                    <a href="tel:+4982190579002" class="btn btn-primary phone-call-btn">Jetzt anrufen</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-phone-mockup phone-slide" data-slide="autohaus">
+                        <div class="phone-frame">
+                            <div class="phone-notch"></div>
+                            <div class="phone-screen">
+                                <div class="phone-statusbar">
+                                    <span class="phone-signal"><span class="wifi"></span></span>
+                                    <span class="phone-battery"><span class="battery"></span><span class="battery-level"></span><span class="battery-tip"></span></span>
+                                </div>
+                                <div class="phone-content-vertical">
+                                    <div class="phone-call-title">Live Call – Autohaus</div>
+                                    <div class="phone-wave-animation">
+                                        <span class="wave wave1"></span>
+                                        <span class="wave wave2"></span>
+                                        <span class="wave wave3"></span>
+                                        <span class="wave wave4"></span>
+                                        <span class="wave wave5"></span>
+                                    </div>
+                                    <div class="phone-keypad">
+                                        <div class="phone-key"><span class="key-label">1</span></div>
+                                        <div class="phone-key"><span class="key-label">2</span><span class="key-sub"></span></div>
+                                        <div class="phone-key"><span class="key-label">3</span><span class="key-sub"></span></div>
+                                        <div class="phone-key"><span class="key-label">4</span><span class="key-sub"></span></div>
+                                        <div class="phone-key"><span class="key-label">5</span><span class="key-sub"></span></div>
+                                        <div class="phone-key"><span class="key-label">6</span><span class="key-sub"></span></div>
+                                        <div class="phone-key"><span class="key-label">7</span><span class="key-sub"></span></div>
+                                        <div class="phone-key"><span class="key-label">8</span><span class="key-sub"></span></div>
+                                        <div class="phone-key"><span class="key-label">9</span><span class="key-sub"></span></div>
+                                        <div class="phone-key"><span class="key-label">*</span></div>
+                                        <div class="phone-key"><span class="key-label">0</span><span class="key-sub">+</span></div>
+                                        <div class="phone-key"><span class="key-label">#</span></div>
+                                    </div>
+                                    <a href="tel:+4982190579016" class="btn btn-primary phone-call-btn">Jetzt anrufen</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="phone-slider-arrow right" aria-label="Nächstes Handy anzeigen" type="button"><span>&#8594;</span></button>
+            </div>
+            <p class="demo-hint" style="text-align: center; color: #ffe066; font-size: 1.15rem; margin-top: 0.5rem; margin-bottom: 2.2rem;">Telefoniere in Echtzeit mit unseren Voice Agents. In verschiedenen Branchen, live und direkt.</p>
+        </section>
+
+        <!-- New Section: Für wen? -->
+        <section id="fuer-wen" class="section fade-in">
+            <h2 class="fade-in">Für wen ist Dominion Voice AI?</h2>
+            <p class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto; color: rgba(255, 255, 255, 0.8);">
+                Unsere Voice Agents sind für Unternehmen da, die telefonische Kundenkommunikation optimieren möchten – von der Arztpraxis bis zum Autohaus.<br>
+                Ob es um Terminvergaben, Rückfragen oder Informationsverteilung geht:<br>
+                Dominion Voice AI automatisiert – Sie profitieren.
+            </p>
+
+            <div class="branchen-slider-wrapper fade-in">
+                <div class="branchen-slider auto-scroll">
+                    <div class="branchen-card fade-in">
+                        <div class="branchen-icon-circle"><i class="fas fa-stethoscope"></i></div>
+                        <div class="branchen-title">Arztpraxen</div>
+                        <div class="branchen-nutzen">24/7 Terminannahme & Patientenfragen automatisch klären</div>
+                        <a href="#demo" class="branchen-cta">Beispiel anhören &rarr;</a>
+                    </div>
+                    <div class="branchen-card fade-in">
+                        <div class="branchen-icon-circle"><i class="fas fa-car-side"></i></div>
+                        <div class="branchen-title">Werkstätten & Autohäuser</div>
+                        <div class="branchen-nutzen">Anfragen & Termine ohne Wartezeit, kein Anruf geht verloren</div>
+                        <a href="#demo" class="branchen-cta">Beispiel anhören &rarr;</a>
+                    </div>
+                    <div class="branchen-card fade-in">
+                        <div class="branchen-icon-circle"><i class="fas fa-taxi"></i></div>
+                        <div class="branchen-title">Taxiunternehmen & Fahrdienste</div>
+                        <div class="branchen-nutzen">Fahrten buchen lassen, Fahrerzuteilung & Preise automatisch</div>
+                        <a href="#demo" class="branchen-cta">Beispiel anhören &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Benefits Section (Why Dominion) -->
+        <section id="vorteile" class="section fade-in">
+            <h2 class="fade-in">Warum Dominion Voice AI?</h2>
+            <div class="vorteile-wrapper" style="max-width: 1100px; margin: 0 auto;">
+                <!-- KPI Counter Row -->
+                <div class="kpi-counter-row fade-in">
+                    <div class="kpi-block fade-in">
+                        <div class="kpi-number" data-target="24">100%</div>
+                        <div class="kpi-label">Automatisierung</div>
+                    </div>
+                    <div class="kpi-block fade-in">
+                        <div class="kpi-number" data-target="90">24/7</div>
+                        <div class="kpi-label">Verfügbarkeit</div>
+                    </div>
+                    <div class="kpi-block fade-in">
+                        <div class="kpi-number" data-target="50">99%</div>
+                        <div class="kpi-label">Zuverlässigkeit</div>
+                    </div>
+                </div>
+                <!-- Benefit Cards -->
+                <div class="benefits-grid fade-in">
+                    <div class="benefit-card fade-in">
+                        <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                        <h3>Immer erreichbar</h3>
+                        <p class="benefit-desc">Ihr Voice Agent nimmt rund um die Uhr Gespräche entgegen – auch an Wochenenden & Feiertagen. Kein verpasster Anruf mehr, keine Warteschleifen.</p>
+                        <p class="benefit-result">💡 Ergebnis: <span class="benefit-highlight">Mehr Buchungen, bessere Kundenbindung.</span></p>
+                    </div>
+                    <div class="benefit-card fade-in">
+                        <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                        <h3>Team-Entlastung</h3>
+                        <p class="benefit-desc">Der Voice Agent filtert Anfragen, klärt Standardfragen und übergibt nur wirklich wichtige Gespräche. Ihr Team kann sich auf das Wesentliche konzentrieren.</p>
+                        <p class="benefit-result">💡 Ergebnis: <span class="benefit-highlight">Weniger Stress, mehr Effizienz.</span></p>
+                    </div>
+                    <div class="benefit-card fade-in">
+                        <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Mehr Umsatz, weniger Chaos</h3>
+                        <p class="benefit-desc">Automatisierte Anrufverarbeitung sorgt für klare Prozesse, keine Wartezeiten und keine Doppelbuchungen. Mehr Struktur im Alltag.</p>
+                        <p class="benefit-result">💡 Ergebnis: <span class="benefit-highlight">Höhere Effizienz = mehr Umsatz.</span></p>
+                    </div>
+                </div>
+            </div>
+        
+
+        <!-- Features Section -->
+        <section id="funktionen" class="section fade-in">
+            <h2 class="fade-in">Das kann dein Voice Agent</h2>
+            <div class="funktionen-wrapper" style="max-width: 1100px; margin: 0 auto;">
+                <p class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto; color: rgba(255, 255, 255, 0.8);">Interagiere mit den Schlüssel‑Funktionen – klick dich durch, um zu sehen, wie ein echter Agent klingt und wirkt.</p>
+                <div class="features-container" style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start;">
+                    <div class="features-tabs" style="min-width: 220px; max-width: 260px; width: 100%; background: rgba(0,0,0,0.7); border-radius: 15px; padding: 1.5rem; border: 1px solid rgba(0,191,255,0.2); box-shadow: 0 0 15px rgba(0,191,255,0.3);">
+                        <div class="tab-item active fade-in" data-tab="tab-terminmanagement"><div class="tab-icon"><i class="fas fa-calendar-alt"></i></div><div class="tab-title">Terminmanagement</div></div>
+                        <div class="tab-item fade-in" data-tab="tab-datenerfassung"><div class="tab-icon"><i class="fas fa-receipt"></i></div><div class="tab-title">Datenerfassung</div></div>
+                        <div class="tab-item fade-in" data-tab="tab-weiterleitung"><div class="tab-icon"><i class="fas fa-sync-alt"></i></div><div class="tab-title">Weiterleitung</div></div>
+                        <div class="tab-item fade-in" data-tab="tab-kontextverstaendnis"><div class="tab-icon"><i class="fas fa-comments"></i></div><div class="tab-title">Kontextverständnis</div></div>
+                        <div class="tab-item fade-in" data-tab="tab-benachrichtigungen"><div class="tab-icon"><i class="fas fa-bell"></i></div><div class="tab-title">Benachrichtigungen</div></div>
+                    </div>
+                    <div class="features-content" style="flex: 1; min-width: 280px; background: rgba(0,0,0,0.7); border-radius: 15px; padding: 2rem; border: 1px solid rgba(0,191,255,0.2); box-shadow: 0 0 15px rgba(0,191,255,0.3);">
+                        <div id="tab-terminmanagement" class="content-slide active fade-in">
+                            <div class="slide-header" style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                <div class="slide-icon" style="font-size: 2.5rem; color: #00bfff; margin-right: 1rem;"><i class="fas fa-calendar-alt"></i></div>
+                                <h3 style="font-size: 1.8rem; color: #00bfff;">Terminvergabe – vollautomatisch</h3>
+                            </div>
+                            <p>Unser Agent prüft Verfügbarkeit, plant direkt in deinen Kalender – 24/7, ohne Rückfragen.<br><span class="subtext">Nie wieder Warteschleifen</span></p>
+                            <div class="slide-visual" style="text-align: center; margin-bottom: 1.5rem;">
+                                <img src="src/assets/images/terminmanagement.png" alt="Screenshot Terminmanagement-Funktion" style="border-radius:10px; margin-top: 1rem; max-width: 350px; width: 100%; height: auto; box-shadow: 0 0 25px rgba(0,191,255,0.4);">
+                            </div>
+                            <a href="#demo" class="btn btn-primary slide-cta">Jetzt Termin testen</a>
+                        </div>
+                        <div id="tab-datenerfassung" class="content-slide fade-in" style="display:none;">
+                            <div class="slide-header" style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                <div class="slide-icon" style="font-size: 2.5rem; color: #00bfff; margin-right: 1rem;"><i class="fas fa-receipt"></i></div>
+                                <h3 style="font-size: 1.8rem; color: #00bfff;">Datenerfassung – präzise & DSGVO-konform</h3>
+                            </div>
+                            <p>Der Agent erfasst alle relevanten Daten strukturiert während des Gesprächs – sicher und vollständig.<br><span class="subtext">Fehlerfreie Dokumentation</span></p>
+                            <div class="slide-visual" style="text-align: center; margin-bottom: 1.5rem;">
+                                <img src="src/assets/images/datenerfassung.png" alt="Screenshot Datenerfassung-Funktion" style="border-radius:10px; margin-top: 1rem; max-width: 350px; width: 100%; height: auto; box-shadow: 0 0 25px rgba(0,191,255,0.4);">
+                            </div>
+                            <a href="#kontakt" class="btn btn-primary slide-cta">Mehr über Datenerfassung</a>
+                        </div>
+                        <div id="tab-weiterleitung" class="content-slide fade-in" style="display:none;">
+                            <div class="slide-header" style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                <div class="slide-icon" style="font-size: 2.5rem; color: #00bfff; margin-right: 1rem;"><i class="fas fa-sync-alt"></i></div>
+                                <h3 style="font-size: 1.8rem; color: #00bfff;">Intelligente Weiterleitung – kein Anruf geht verloren</h3>
+                            </div>
+                            <p>Bei dringenden oder speziellen Anliegen leitet der Agent das Gespräch sofort an die richtige Person weiter.<br><span class="subtext">Immer ansprechbar</span></p>
+                            <div class="slide-visual" style="text-align: center; margin-bottom: 1.5rem;">
+                                <img src="src/assets/images/weiterleitung.png" alt="Screenshot Weiterleitungs-Funktion" style="border-radius:10px; margin-top: 1rem; max-width: 350px; width: 100%; height: auto; box-shadow: 0 0 25px rgba(0,191,255,0.4);">
+                            </div>
+                            <a href="#kontakt" class="btn btn-primary slide-cta">Details zur Weiterleitung</a>
+                        </div>
+                        <div id="tab-kontextverstaendnis" class="content-slide fade-in" style="display:none;">
+                            <div class="slide-header" style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                <div class="slide-icon" style="font-size: 2.5rem; color: #00bfff; margin-right: 1rem;"><i class="fas fa-comments"></i></div>
+                                <h3 style="font-size: 1.8rem; color: #00bfff;">Kontextverständnis – natürlich & flüssig</h3>
+                            </div>
+                            <p>Dein Voice Agent versteht den Gesprächskontext, fragt nach bei Unklarheiten und reagiert flexibel.<br><span class="subtext">Echte Unterhaltungen</span></p>
+                            <div class="slide-visual" style="text-align: center; margin-bottom: 1.5rem;">
+                                <img src="src/assets/images/kontextverstaendnis.png" alt="Screenshot Kontextverständnis-Funktion" style="border-radius:10px; margin-top: 1rem; max-width: 350px; width: 100%; height: auto; box-shadow: 0 0 25px rgba(0,191,255,0.4);">
+                            </div>
+                            <a href="#kontakt" class="btn btn-primary slide-cta">Wie das funktioniert</a>
+                        </div>
+                        <div id="tab-benachrichtigungen" class="content-slide fade-in" style="display:none;">
+                            <div class="slide-header" style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                <div class="slide-icon" style="font-size: 2.5rem; color: #00bfff; margin-right: 1rem;"><i class="fas fa-bell"></i></div>
+                                <h3 style="font-size: 1.8rem; color: #00bfff;">Automatische Benachrichtigungen – alles im Blick</h3>
+                            </div>
+                            <p>Nach jedem wichtigen Vorgang sendet der Agent automatisch Bestätigungen oder Infos per SMS.<br><span class="subtext">Nie wieder Unsicherheit</span></p>
+                            <div class="slide-visual" style="text-align: center; margin-bottom: 1.5rem;">
+                                <img src="src/assets/images/benachrichtigung.png" alt="Screenshot Benachrichtigungs-Funktion" style="border-radius:10px; margin-top: 1rem; max-width: 350px; width: 100%; height: auto; box-shadow: 0 0 25px rgba(0,191,255,0.4);">
+                            </div>
+                            <a href="#kontakt" class="btn btn-primary slide-cta">Benachrichtigungen im Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                // Interaktive Tabs für Features
+                document.querySelectorAll('.features-tabs .tab-item').forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        document.querySelectorAll('.features-tabs .tab-item').forEach(t => t.classList.remove('active'));
+                        document.querySelectorAll('.features-content .content-slide').forEach(s => s.style.display = 'none');
+                        this.classList.add('active');
+                        const target = this.getAttribute('data-tab');
+                        document.getElementById(target).style.display = 'block';
+                    });
+                });
+                // Standard: Erstes Tab anzeigen
+                document.querySelectorAll('.features-content .content-slide').forEach((s, i) => {
+                    s.style.display = (i === 0) ? 'block' : 'none';
+                });
+            </script>
+
+            
+
+        <!-- Contact Section -->
+        <section id="kontakt" class="section fade-in">
+            <h2 class="fade-in contact-title">🚀 Lass uns über deinen Voice Agent sprechen</h2>
+            <p class="fade-in contact-subtitle">Fülle das Formular aus – wir melden uns persönlich mit einer passgenauen Lösung für dein Unternehmen.</p>
+
+            <div class="contact-container fade-in">
+                <form action="https://formspree.io/f/manjoynk" method="POST" enctype="multipart/form-data">
+
+                    <!-- 🔹 NAME -->
+                    <div class="form-group">
+                        <label for="name">👤 Name*</label>
+                        <input type="text" id="name" name="name" placeholder="Dein Name" required>
+                    </div>
+
+                    <!-- 🔹 UNTERNEHMEN -->
+                    <div class="form-group">
+                        <label for="unternehmen">🏢 Unternehmen (optional)</label>
+                        <input type="text" id="unternehmen" name="unternehmen" placeholder="z. B. Praxis Dr. Müller">
+                    </div>
+
+                    <!-- 🔹 EMAIL -->
+                    <div class="form-group">
+                        <label for="email">📧 E-Mail-Adresse*</label>
+                        <input type="email" id="email" name="email" placeholder="dein.name@firma.de" required>
+                    </div>
+
+                    <!-- 🔹 TELEFON -->
+                    <div class="form-group">
+                        <label for="telefon">📞 Telefonnummer (optional)</label>
+                        <input type="tel" id="telefon" name="telefon" placeholder="Für Rückfragen oder Rückruf">
+                    </div>
+
+                    <!-- 🔹 BRANCHE -->
+                    <div class="form-group">
+                        <label for="branche">📂 Branche / Typ</label>
+                        <select id="branche" name="branche">
+                            <option value="Bitte auswählen">Bitte auswählen</option>
+                            <option value="Arztpraxis">Arztpraxis</option>
+                            <option value="Autowerkstatt">Autowerkstatt</option>
+                            <option value="Hotel / Gastro">Hotel / Gastro</option>
+                            <option value="Taxiunternehmen">Taxiunternehmen</option>
+                            <option value="Immobilien">Immobilien</option>
+                            <option value="Sonstiges">Sonstiges</option>
+                        </select>
+                    </div>
+
+                    <!-- 🔹 AUTOMATISIERUNGSZIEL -->
+                    <div class="form-group">
+                        <label for="automatisierung">⚙️ Was möchtest du automatisieren?*</label>
+                        <input type="text" id="automatisierung" name="automatisierung" placeholder="z. B. Terminvergabe, FAQ, Weiterleitung…" required>
+                    </div>
+
+                    <!-- 🔹 NACHRICHT -->
+                    <div class="form-group">
+                        <label for="nachricht">💬 Nachricht / Anforderung*</label>
+                        <textarea id="nachricht" name="nachricht" rows="5" placeholder="Beschreibe deine individuelle Herausforderung…" maxlength="500" required></textarea>
+                        <div class="char-count">0 / 500 Zeichen</div>
+                    </div>
+
+                    <!-- 🔹 DATEI-UPLOAD -->
+                    <div class="form-group">
+                        <label for="file">📎 Datei anhängen (optional)</label>
+                        <input type="file" id="file" name="anhang">
+                        <small class="field-description">z. B. Kalender-Screenshot, Gesprächsfluss (max. 5 MB)</small>
+                    </div>
+
+                    <!-- 🔐 DATENSCHUTZ -->
+                    <div class="form-group privacy-consent-group">
+                        <input type="checkbox" id="privacy-consent" name="datenschutz" required>
+                        <label for="privacy-consent">Ich stimme der Verarbeitung meiner Daten gemäß der <a href="Infos/datenschutzerklaerung.html" target="_blank">Datenschutzerklärung</a> zu.</label>
+                    </div>
+
+                    <!-- 🔁 FORMSPREE OPTIONS -->
+                    <input type="hidden" name="_subject" value="Neue Anfrage über dominionvoice-ai.de">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_redirect" value="https://dominionvoice-ai.de/danke.html">
+
+                    <!-- 🔘 ABSENDEN -->
+                    <button type="submit" class="btn btn-primary btn-contact">📩 Jetzt Anfrage senden</button>
+                    <div id="form-feedback" class="form-feedback"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer fade-in" role="contentinfo">
+            <div class="footer-content fade-in">
+                <div class="footer-logo fade-in" style="display: flex; align-items: center; gap: 18px;">
+                    <img src="src/assets/images/krone-logo.png" alt="Goldenes Krone Siegel – Auszeichnung für Qualität" class="footer-krone-logo" style="height: 70px; width: auto;">
+                    <img src="src/assets/images/logo-dominion-voice-ai.png" alt="Dominion Voice AI Logo – Sprachassistent für Unternehmen" class="footer-main-logo" style="height: 70px; width: auto;">
+                </div>
+                <div class="footer-columns fade-in">
+                    <div class="footer-column fade-in">
+                        <h3 class="footer-column-title">Navigation</h3>
+                        <ul class="footer-links">
+                            <li><a href="#start">Home</a></li>
+                            <li><a href="#demo">Demo</a></li>
+                            <li><a href="#fuer-wen">Für wen?</a></li>
+                            <li><a href="#vorteile">Vorteile</a></li>
+                            <li><a href="#funktionen">So funktioniert's</a></li>
+                            <li><a href="#kontakt">Kontakt</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column fade-in">
+                        <h3 class="footer-column-title">Socials</h3>
+                        <ul class="footer-links social-links">
+                            <li><a href="https://www.linkedin.com/in/yannik-huber-81bbb7331/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                            <li><a href="https://www.instagram.com/dominionvoice.ai/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                            <li><a href="https://youtube.com/@dominionvoice-ai?si=S1T2kMAEPdDwzHLI" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column fade-in">
+                        <h3 class="footer-column-title">Kontakt</h3>
+                        <ul class="footer-links">
+                            <li><a href="mailto:kontakt@dominionvoice-ai.de">kontakt@dominionvoice-ai.de</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column fade-in">
+                        <h3 class="footer-column-title">Rechtliches</h3>
+                        <ul class="footer-links">
+                            <li><a href="impressum.html" target="_blank">Impressum</a></li>
+                            <li><a href="agb.html" target="_blank">AGB</a></li>
+                            <li><a href="datenschutzerklaerung.html" target="_blank">Datenschutz</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="copyright">&copy; 2025 Dominion Voice AI. Alle Rechte vorbehalten.</p>
+            </div>
+        </footer>
+    </div>
+    <!-- JavaScript -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations (IntersectionObserver für alle Animationsklassen)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Nur einmal animieren
+                }
+            });
+        }, observerOptions);
+
+        // Alle relevanten Elemente beobachten
+        document.querySelectorAll('.fade-in, .slide-in-up, .slide-in-left, .slide-in-right, .btn, .section, .footer-column').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Live Character Count for 'Nachricht' textarea
+        const nachrichtTextarea = document.getElementById('nachricht');
+        const charCountDisplay = document.querySelector('.char-count');
+
+        if (nachrichtTextarea && charCountDisplay) {
+            const maxLength = nachrichtTextarea.getAttribute('maxlength');
+            charCountDisplay.textContent = `0 / ${maxLength} Zeichen`;
+
+            nachrichtTextarea.addEventListener('input', function() {
+                const currentLength = this.value.length;
+                charCountDisplay.textContent = `${currentLength} / ${maxLength} Zeichen`;
+            });
+        }
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            const isLightMode = document.body.classList.contains('light-mode');
+
+            if (isLightMode) {
+                header.style.background = '#ffffff'; // Bleibt im Light Mode immer weiß
+            } else {
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(0, 0, 0, 0.98)';
+                } else {
+                    header.style.background = 'rgba(0, 0, 0, 0.95)';
+                }
+            }
+        });
+
+        const toggleSwitch = document.getElementById('checkbox');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme) {
+            document.body.classList.add(currentTheme);
+            if (currentTheme === 'light-mode') {
+                toggleSwitch.checked = true;
+            }
+        }
+
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.body.classList.add('light-mode');
+                localStorage.setItem('theme', 'light-mode');
+            } else {
+                document.body.classList.remove('light-mode');
+                localStorage.setItem('theme', 'dark-mode');
+            }
+        }
+
+        toggleSwitch.addEventListener('change', switchTheme);
+
+        // Features Tab Logic
+        const tabItems = document.querySelectorAll('.tab-item');
+        const contentSlides = document.querySelectorAll('.content-slide');
+        // const audioCue = new Audio('path/to/your/sound.mp3'); // Optional: Path to your sound file
+
+        tabItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all tab items and content slides
+                tabItems.forEach(t => t.classList.remove('active'));
+                contentSlides.forEach(s => s.classList.remove('active'));
+
+                // Add active class to the clicked tab item
+                this.classList.add('active');
+
+                // Get the data-tab attribute to find the corresponding content slide
+                const targetTab = this.getAttribute('data-tab');
+                const targetSlide = document.getElementById(targetTab);
+
+                // Add active class to the target content slide
+                if (targetSlide) {
+                    targetSlide.classList.add('active');
+                    // Optional: Play sound cue
+                    // audioCue.play();
+                }
+            });
+        });
+
+        // Initialize: show the first tab content by default
+        if (tabItems.length > 0 && contentSlides.length > 0) {
+            tabItems[0].classList.add('active');
+            contentSlides[0].classList.add('active');
+        }
+
+        
+
+        // Endlos-Auto-Scroll für Branchen-Slider (Moved from <head> scripts)
+        (function() {
+            const slider = document.querySelector('.branchen-slider.auto-scroll');
+            if (!slider) return;
+            // Dupliziere die Cards für Endlos-Effekt
+            const cards = Array.from(slider.children);
+            cards.forEach(card => {
+                const clone = card.cloneNode(true);
+                slider.appendChild(clone);
+            });
+        })();
+
+        // Animierte KPI-Counter beim Scroll-In (Moved from <head> scripts)
+        function animateKPI(element, target, duration = 1800) {
+            let start = 0;
+            let startTime = null;
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                const value = Math.floor(progress * target);
+                element.textContent = value + (target === 24 ? '/7' : target === 90 || target === 50 ? '%' : '');
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    element.textContent = target + (target === 24 ? '/7' : target === 90 || target === 50 ? '%' : '');
+                }
+            }
+            requestAnimationFrame(step);
+        }
+        function handleKPIAnimation() {
+            const kpis = document.querySelectorAll('.kpi-number');
+            let animated = false;
+            function onScroll() {
+                if (animated) return;
+                const kpiRow = document.querySelector('.kpi-counter-row');
+                if (!kpiRow) return;
+                const rect = kpiRow.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 80) {
+                    kpis.forEach(kpi => {
+                        const target = parseInt(kpi.getAttribute('data-target'), 10);
+                        animateKPI(kpi, target);
+                    });
+                    animated = true;
+                    window.removeEventListener('scroll', onScroll);
+                }
+            }
+            window.addEventListener('scroll', onScroll);
+            onScroll();
+        }
+        document.addEventListener('DOMContentLoaded', handleKPIAnimation);
+    </script>
+    <script>
+        // Mobile Menu Logic
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('active')) {
+                    hamburgerMenu.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                }
+            });
+        });
+    </script>
+    <script>
+    // Handy-Mockup Slider-Logik
+    const slides = document.querySelectorAll('.phone-slide');
+    const leftArrow = document.querySelector('.phone-slider-arrow.left');
+    const rightArrow = document.querySelector('.phone-slider-arrow.right');
+    let current = 0;
+
+    function showSlide(idx) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active', 'to-left', 'to-right');
+            if (i === idx) {
+                slide.classList.add('active');
+            } else if (i < idx) {
+                slide.classList.add('to-left');
+            } else {
+                slide.classList.add('to-right');
+            }
+        });
+    }
+
+    leftArrow.addEventListener('click', () => {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+    });
+    rightArrow.addEventListener('click', () => {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+    });
+
+    // Initial anzeigen
+    showSlide(current);
+    </script>
+
+<!-- Vapi Voice Agent Widget -->
+<vapi-widget
+  public-key="8bf7ee3a-30d7-48ca-9f24-64e1a2b6b133"
+  assistant-id="93a24c39-3507-4712-93dd-3a1e5a4a8bdf"
+  mode="voice"
+  theme="dark"
+  base-bg-color="#000000"
+  accent-color="#14B8A6"
+  cta-button-color="#ece4e4"
+  cta-button-text-color="#030303"
+  border-radius="medium"
+  size="compact"
+  position="bottom-right"
+  title="TALK WITH AI VOICE AGENT"
+  start-button-text="Start"
+  end-button-text="End Call"
+  chat-first-message="Hey, How can I help you today?"
+  chat-placeholder="Type your message..."
+  voice-show-transcript="false"
+  consent-required="true"
+  consent-title="Terms and conditions"
+  consent-content="By clicking Agree, and each time I interact with this AI agent, I consent to the recording, storage, and sharing of my communications with third-party service providers, and as otherwise described in our Terms of Service."
+  consent-storage-key="vapi_widget_consent"
+></vapi-widget>
+<script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async type="text/javascript"></script>
+</body>
+</html>

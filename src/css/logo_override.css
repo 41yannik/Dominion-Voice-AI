@@ -1,0 +1,37 @@
+.hero-large-krone {
+    position: absolute !important;
+    right: 2% !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    max-width: 40px !important;
+    width: 40px !important;
+    height: auto !important;
+    opacity: 0.65 !important;
+    z-index: 3 !important;
+    pointer-events: none !important;
+    filter: drop-shadow(0 2px 8px rgba(0,191,255,0.10)) !important;
+    transition: max-width 0.3s, opacity 0.3s !important;
+}
+
+@media (max-width: 900px) {
+  .hero-large-krone {
+    max-width: 32px !important;
+    width: 32px !important;
+    right: 1% !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-large-krone {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 18px auto 0 auto !important;
+    max-width: 28px !important;
+    width: 28px !important;
+    opacity: 0.55 !important;
+    display: block !important;
+  }
+} 
