@@ -1352,7 +1352,7 @@
                 <ul class="nav-menu" id="main-navigation">
                     <li><a href="#start">Home</a></li>
                     <li><a href="#demo">Demo</a></li>
-                    <li><a href="#fuer-wen">Für wen?</a></li>
+    
                     <li><a href="#vorteile">Vorteile</a></li>
                     <li><a href="#funktionen">So funktioniert's</a></li>
                     <li><a href="#kontakt">Kontakt</a></li>
@@ -1479,38 +1479,7 @@
             <p class="demo-hint" style="text-align: center; color: #ffe066; font-size: 1.15rem; margin-top: 0.5rem; margin-bottom: 2.2rem;">Telefoniere in Echtzeit mit unseren Voice Agents. In verschiedenen Branchen, live und direkt.</p>
         </section>
 
-        <!-- New Section: Für wen? -->
-        <section id="fuer-wen" class="section fade-in">
-            <h2 class="fade-in">Für wen ist Dominion Voice AI?</h2>
-            <p class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto; color: rgba(255, 255, 255, 0.8);">
-                Unsere Voice Agents sind für Unternehmen da, die telefonische Kundenkommunikation optimieren möchten – von der Arztpraxis bis zum Autohaus.<br>
-                Ob es um Terminvergaben, Rückfragen oder Informationsverteilung geht:<br>
-                Dominion Voice AI automatisiert – Sie profitieren.
-            </p>
 
-            <div class="branchen-slider-wrapper fade-in">
-                <div class="branchen-slider auto-scroll">
-                    <div class="branchen-card fade-in">
-                        <div class="branchen-icon-circle"><i class="fas fa-stethoscope"></i></div>
-                        <div class="branchen-title">Arztpraxen</div>
-                        <div class="branchen-nutzen">24/7 Terminannahme & Patientenfragen automatisch klären</div>
-                        <a href="#demo" class="branchen-cta">Beispiel anhören &rarr;</a>
-                    </div>
-                    <div class="branchen-card fade-in">
-                        <div class="branchen-icon-circle"><i class="fas fa-car-side"></i></div>
-                        <div class="branchen-title">Werkstätten & Autohäuser</div>
-                        <div class="branchen-nutzen">Anfragen & Termine ohne Wartezeit, kein Anruf geht verloren</div>
-                        <a href="#demo" class="branchen-cta">Beispiel anhören &rarr;</a>
-                    </div>
-                    <div class="branchen-card fade-in">
-                        <div class="branchen-icon-circle"><i class="fas fa-taxi"></i></div>
-                        <div class="branchen-title">Taxiunternehmen & Fahrdienste</div>
-                        <div class="branchen-nutzen">Fahrten buchen lassen, Fahrerzuteilung & Preise automatisch</div>
-                        <a href="#demo" class="branchen-cta">Beispiel anhören &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- KPI Highlight Section -->
         <section class="kpi-highlight-section fade-in">
@@ -2073,7 +2042,7 @@
                         <ul class="footer-links">
                             <li><a href="#start">Home</a></li>
                             <li><a href="#demo">Demo</a></li>
-                            <li><a href="#fuer-wen">Für wen?</a></li>
+            
                             <li><a href="#vorteile">Vorteile</a></li>
                             <li><a href="#funktionen">So funktioniert's</a></li>
                             <li><a href="#kontakt">Kontakt</a></li>
@@ -2229,17 +2198,7 @@
 
         
 
-        // Endlos-Auto-Scroll für Branchen-Slider (Moved from <head> scripts)
-        (function() {
-            const slider = document.querySelector('.branchen-slider.auto-scroll');
-            if (!slider) return;
-            // Dupliziere die Cards für Endlos-Effekt
-            const cards = Array.from(slider.children);
-            cards.forEach(card => {
-                const clone = card.cloneNode(true);
-                slider.appendChild(clone);
-            });
-        })();
+
 
         // Animierte KPI-Counter beim Scroll-In (Moved from <head> scripts)
         function animateKPI(element, target, duration = 1800) {
