@@ -1350,6 +1350,312 @@
         letter-spacing: 0.8px;
       }
     }
+    
+    /* Warum jetzt handeln? Sektion */
+    .why-act-section {
+      background: linear-gradient(135deg, 
+        rgba(5, 15, 25, 0.98) 0%,
+        rgba(10, 20, 30, 0.95) 50%,
+        rgba(5, 15, 25, 0.98) 100%
+      );
+      padding: 4rem 0;
+      margin: 0;
+      position: relative;
+      border-top: 1px solid rgba(0, 191, 255, 0.1);
+      border-bottom: 1px solid rgba(0, 191, 255, 0.1);
+    }
+    
+    .why-act-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .why-act-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    }
+    
+    .why-act-subtitle {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+      text-align: center;
+      margin-bottom: 3rem;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+    
+    /* 3-Spalten Grid */
+    .why-act-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      align-items: start;
+    }
+    
+    .why-act-column {
+      background: rgba(20, 30, 45, 0.6);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid rgba(0, 191, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .why-act-column:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 191, 255, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .column-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .column-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    .problem-icon {
+      filter: hue-rotate(0deg);
+    }
+    
+    .transition-icon {
+      filter: hue-rotate(200deg);
+    }
+    
+    .solution-icon {
+      filter: hue-rotate(120deg);
+    }
+    
+    .column-header h3 {
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin: 0;
+      font-weight: 700;
+    }
+    
+    /* Problem Points */
+    .problem-points, .solution-points {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .problem-point, .solution-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      border-left: 3px solid rgba(255, 100, 100, 0.6);
+    }
+    
+    .solution-point {
+      border-left-color: rgba(100, 255, 100, 0.6);
+    }
+    
+    .point-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+    
+    .point-content strong {
+      color: #ffffff;
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .point-content p {
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    /* Transition Column (Mitte) */
+    .transition-column {
+      width: 250px;
+      background: linear-gradient(145deg, 
+        rgba(0, 191, 255, 0.1) 0%,
+        rgba(0, 150, 200, 0.15) 50%,
+        rgba(0, 191, 255, 0.1) 100%
+      );
+      border: 1px solid rgba(0, 191, 255, 0.3);
+    }
+    
+    .process-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .flow-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      border: 1px solid rgba(0, 191, 255, 0.2);
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    
+    .flow-step.active {
+      background: rgba(0, 191, 255, 0.2);
+      border-color: rgba(0, 191, 255, 0.5);
+      transform: scale(1.05);
+    }
+    
+    .flow-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .flow-step span {
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    .flow-arrow {
+      font-size: 1.5rem;
+      color: rgba(0, 191, 255, 0.8);
+      font-weight: bold;
+    }
+    
+    /* Benefits Overview */
+    .benefits-overview {
+      background: linear-gradient(145deg, 
+        rgba(0, 191, 255, 0.05) 0%,
+        rgba(0, 150, 200, 0.08) 50%,
+        rgba(0, 191, 255, 0.05) 100%
+      );
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      border: 1px solid rgba(0, 191, 255, 0.2);
+    }
+    
+    .benefits-title {
+      font-size: 1.8rem;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
+    .benefit-card {
+      background: rgba(20, 30, 45, 0.8);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(0, 191, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 191, 255, 0.4);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .benefit-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    .benefit-card h4 {
+      color: #ffffff;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .benefit-card p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+    
+    /* Mobile Anpassungen für Why Act Section */
+    @media (max-width: 768px) {
+      .why-act-section {
+        padding: 3rem 0;
+      }
+      
+      .why-act-container {
+        padding: 0 1rem;
+      }
+      
+      .why-act-title {
+        font-size: 2.2rem;
+      }
+      
+      .why-act-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+      
+      .why-act-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+      
+      .transition-column {
+        width: 100%;
+        order: -1;
+      }
+      
+      .benefits-overview {
+        padding: 2rem 1rem;
+      }
+      
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .why-act-title {
+        font-size: 1.9rem;
+      }
+      
+      .why-act-column {
+        padding: 1.5rem;
+      }
+      
+      .column-icon {
+        font-size: 2.5rem;
+      }
+      
+      .benefits-title {
+        font-size: 1.5rem;
+      }
+    }
     </style>
   <link rel="apple-touch-icon" sizes="180x180" href="src/assets/favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="src/assets/favicon_io/favicon-32x32.png">
@@ -1409,6 +1715,137 @@
                     <a href="#demo" class="btn btn-primary fade-in">Jetzt Live Demo</a>
                     <a href="#kontakt" class="btn btn-secondary fade-in">Kontakt aufnehmen</a>
                     <a href="#fuer-wen" class="btn btn-tertiary fade-in">Mehr erfahren</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Neue Sektion: Warum jetzt handeln? -->
+        <section id="warum-handeln" class="section why-act-section fade-in">
+            <div class="why-act-container">
+                <h2 class="why-act-title fade-in">Warum jetzt handeln?</h2>
+                <p class="why-act-subtitle fade-in">
+                    Ihre Kunden warten. Ihre Mitarbeitenden sind überlastet. Ihr Unternehmen verliert Zeit und Geld.
+                </p>
+                
+                <!-- 3-Spalten Problem-Lösung Layout -->
+                <div class="why-act-grid fade-in">
+                    <!-- Problem Spalte -->
+                    <div class="why-act-column problem-column">
+                        <div class="column-header">
+                            <div class="column-icon problem-icon">❌</div>
+                            <h3>Das Problem</h3>
+                        </div>
+                        <div class="problem-points">
+                            <div class="problem-point">
+                                <div class="point-icon">🕒</div>
+                                <div class="point-content">
+                                    <strong>Zeitverlust</strong>
+                                    <p>Stunden gehen durch manuelle Aufgaben und doppelte Rückfragen verloren</p>
+                                </div>
+                            </div>
+                            <div class="problem-point">
+                                <div class="point-icon">👨‍💻</div>
+                                <div class="point-content">
+                                    <strong>Mitarbeiterüberlastung</strong>
+                                    <p>Fachkräftemangel und steigende Erwartungen überfordern Ihr Team</p>
+                                </div>
+                            </div>
+                            <div class="problem-point">
+                                <div class="point-icon">📉</div>
+                                <div class="point-content">
+                                    <strong>Sinkende Effizienz</strong>
+                                    <p>Unstrukturierte Prozesse bremsen Wachstum und erhöhen Kosten</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Übergang Spalte -->
+                    <div class="why-act-column transition-column">
+                        <div class="column-header">
+                            <div class="column-icon transition-icon">🔄</div>
+                            <h3>Was sich ändern muss</h3>
+                        </div>
+                        <div class="process-flow">
+                            <div class="flow-step">
+                                <div class="flow-icon">📞</div>
+                                <span>Anruf eingehend</span>
+                            </div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-step active">
+                                <div class="flow-icon">🤖</div>
+                                <span>Voice Agent</span>
+                            </div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-step">
+                                <div class="flow-icon">⚡</div>
+                                <span>Automatisierte Lösung</span>
+                            </div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-step">
+                                <div class="flow-icon">😊</div>
+                                <span>Zufriedener Kunde</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Lösung Spalte -->
+                    <div class="why-act-column solution-column">
+                        <div class="column-header">
+                            <div class="column-icon solution-icon">✅</div>
+                            <h3>Die Lösung</h3>
+                        </div>
+                        <div class="solution-points">
+                            <div class="solution-point">
+                                <div class="point-icon">🤖</div>
+                                <div class="point-content">
+                                    <strong>KI-Automatisierung</strong>
+                                    <p>Intelligente Voice Agents verstehen, reagieren und handeln sofort</p>
+                                </div>
+                            </div>
+                            <div class="solution-point">
+                                <div class="point-icon">📞</div>
+                                <div class="point-content">
+                                    <strong>24/7 Verfügbarkeit</strong>
+                                    <p>Prozesse laufen rund um die Uhr, Anfragen in Sekunden gelöst</p>
+                                </div>
+                            </div>
+                            <div class="solution-point">
+                                <div class="point-icon">📈</div>
+                                <div class="point-content">
+                                    <strong>Skalierbares Wachstum</strong>
+                                    <p>DSGVO-konform, zuverlässig und effizient skalierbar</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Vorteile auf einen Blick -->
+                <div class="benefits-overview fade-in">
+                    <h3 class="benefits-title">🎯 Ihre Vorteile auf einen Blick</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">🕒</div>
+                            <h4>24/7-Erreichbarkeit</h4>
+                            <p>Kunden erhalten sofort Antworten – ganz ohne Wartezeiten.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">🤖</div>
+                            <h4>Weniger Arbeitslast</h4>
+                            <p>Ihre Mitarbeitenden werden entlastet und fokussieren sich auf das Wesentliche.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">💰</div>
+                            <h4>Kostenersparnis</h4>
+                            <p>Automatisierte Abläufe senken Personal- und Prozesskosten.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">📈</div>
+                            <h4>Skalierbares Wachstum</h4>
+                            <p>Wachsen ohne Mehraufwand – Ihre Infrastruktur passt sich flexibel an.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
