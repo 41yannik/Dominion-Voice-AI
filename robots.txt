@@ -1,4 +1,4 @@
 User-agent: *
-Disallow:
+Allow: /
 
-Sitemap: https://41yannik.github.io/Dominion-Voice-AI/sitemap.xml
+Sitemap: https://www.dominionvoice-ai.de/sitemap.xml

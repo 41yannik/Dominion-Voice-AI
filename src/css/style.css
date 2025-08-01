@@ -182,24 +182,6 @@ body.light-mode .theme-switch input:checked + .slider:before {
     text-align: center;
 }
 
-.hero-content::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 1400px;
-    height: 900px;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    background: url('./carbon-fiber.png');
-    background-size: 160px 160px;
-    background-repeat: repeat;
-    opacity: 0.38;
-    filter: blur(1.1px) contrast(1.4) brightness(1.1);
-    border-radius: 60px;
-    box-shadow: 0 0 180px 120px #000 inset, 0 0 180px 120px #000;
-}
-
 .hero-content::after {
     content: '';
     position: absolute;
