@@ -63,14 +63,15 @@
   }
   </script>
     <style>
-    /* Kompakter Header mit dynamischer Breite */
+    /* Zentrierter Header mit dynamischer Breite */
     .header {
       position: fixed !important;
       top: 1rem !important; /* Abstand zur Oberkante */
-      left: 1rem !important;
-      right: auto !important; /* Automatische rechte Positionierung */
+      left: 50% !important; /* Horizontal zentrieren */
+      right: auto !important;
       width: auto !important; /* Dynamische Breite basierend auf Inhalt */
       max-width: calc(100% - 2rem) !important; /* Maximalbreite mit Abstand */
+      transform: translateX(-50%) !important; /* Exakte Zentrierung */
       background-color: rgba(0, 0, 0, 0.85) !important;
       backdrop-filter: blur(15px) !important;
       border-radius: 16px !important; /* Abgerundete Ecken */
@@ -185,10 +186,11 @@
       /* Mobile Header-Anpassungen */
       .header {
         top: 0.5rem !important;
-        left: 0.5rem !important;
-        right: 0.5rem !important;
+        left: 50% !important; /* Zentriert auch auf Mobile */
+        right: auto !important;
         width: calc(100% - 1rem) !important;
         max-width: calc(100% - 1rem) !important;
+        transform: translateX(-50%) !important; /* Zentriert auch auf Mobile */
         border-radius: 12px !important;
         padding: 0.2rem 0 !important; /* Sehr kompakt auf mobil */
       }
