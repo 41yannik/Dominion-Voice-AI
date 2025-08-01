@@ -1176,21 +1176,21 @@
       }
     }
     
-        /* KPI Highlight Section (Sanfter verblendender Übergang) */
+        /* KPI Highlight Section (Modern Professional Design) */
     .kpi-highlight-section {
-      background: linear-gradient(to bottom, 
-        rgba(0, 0, 0, 0.1) 0%,
-        rgba(0, 191, 255, 0.15) 15%,
-        rgba(0, 191, 255, 0.3) 30%,
-        rgba(0, 191, 255, 0.4) 50%,
-        rgba(0, 191, 255, 0.3) 70%,
-        rgba(0, 191, 255, 0.15) 85%,
-        rgba(0, 0, 0, 0.1) 100%
+      background: linear-gradient(135deg, 
+        rgba(15, 25, 40, 0.95) 0%,
+        rgba(25, 35, 50, 0.98) 25%,
+        rgba(20, 30, 45, 0.96) 50%,
+        rgba(25, 35, 50, 0.98) 75%,
+        rgba(15, 25, 40, 0.95) 100%
       );
-      padding: 2.5rem 0;
+      padding: 3rem 0;
       margin: 0;
       position: relative;
       overflow: hidden;
+      border-top: 1px solid rgba(0, 191, 255, 0.1);
+      border-bottom: 1px solid rgba(0, 191, 255, 0.1);
     }
     
     .kpi-highlight-section::before {
@@ -1200,10 +1200,11 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(ellipse at center, 
-        rgba(0, 191, 255, 0.2) 0%,
-        rgba(0, 191, 255, 0.1) 40%,
-        rgba(0, 191, 255, 0.05) 70%,
+      background: linear-gradient(90deg, 
+        transparent 0%,
+        rgba(0, 191, 255, 0.03) 25%,
+        rgba(0, 191, 255, 0.05) 50%,
+        rgba(0, 191, 255, 0.03) 75%,
         transparent 100%
       );
       pointer-events: none;
@@ -1221,23 +1222,23 @@
     
     .kpi-highlight-title {
       font-size: 2.5rem;
-      font-weight: 900;
+      font-weight: 800;
       color: #ffffff;
       margin-bottom: 0.8rem;
       text-shadow: 
-        2px 2px 8px rgba(0, 0, 0, 0.8),
-        0 0 20px rgba(0, 191, 255, 0.6),
-        0 0 40px rgba(0, 191, 255, 0.3);
+        2px 2px 6px rgba(0, 0, 0, 0.6),
+        0 0 8px rgba(0, 191, 255, 0.2);
+      letter-spacing: -0.5px;
     }
     
     .kpi-highlight-subtitle {
       font-size: 1.1rem;
-      color: #ffffff;
-      margin-bottom: 2rem;
-      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 2.5rem;
+      font-weight: 400;
       text-shadow: 
-        0 0 8px rgba(255, 255, 255, 0.5),
-        1px 1px 2px rgba(0, 0, 0, 0.3);
+        1px 1px 3px rgba(0, 0, 0, 0.4);
+      opacity: 0.9;
     }
     
     .kpi-highlight-stats {
@@ -1254,59 +1255,90 @@
     }
     
     .kpi-highlight-number {
-      font-size: 3.8rem;
-      font-weight: 900;
+      font-size: 4rem;
+      font-weight: 700;
       color: #ffffff;
-      line-height: 1;
-      margin-bottom: 0.5rem;
+      line-height: 0.9;
+      margin-bottom: 0.8rem;
       text-shadow: 
-        0 0 15px rgba(255, 255, 255, 1),
-        0 0 30px rgba(0, 191, 255, 0.8),
-        0 0 45px rgba(0, 191, 255, 0.6),
-        2px 2px 8px rgba(0, 0, 0, 0.8);
+        2px 2px 8px rgba(0, 0, 0, 0.7),
+        0 0 6px rgba(0, 191, 255, 0.3);
       display: block;
-      animation: pulse-zoom 2s ease-in-out infinite;
+      background: linear-gradient(145deg, #ffffff 0%, rgba(0, 191, 255, 0.9) 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+      transition: all 0.3s ease;
+    }
+    
+    .kpi-highlight-number:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.4));
     }
     
     .kpi-highlight-label {
-      font-size: 1rem;
-      color: #ffffff;
-      font-weight: 600;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.2px;
       text-shadow: 
-        0 0 10px rgba(255, 255, 255, 0.8),
-        0 0 20px rgba(0, 191, 255, 0.6),
-        2px 2px 6px rgba(0, 0, 0, 0.8);
+        1px 1px 3px rgba(0, 0, 0, 0.5);
+      opacity: 0.85;
     }
     
-    /* Pulsierende Zoom-Animation für die Zahlen */
-    @keyframes pulse-zoom {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.08);
-      }
+    /* Smooth Transitions für KPI Items */
+    .kpi-highlight-item {
+      transition: all 0.3s ease;
+    }
+    
+    .kpi-highlight-item:hover {
+      transform: translateY(-2px);
     }
     
     /* Mobile Anpassungen für KPI Highlight */
     @media (max-width: 768px) {
       .kpi-highlight-section {
-        padding: 2rem 0;
+        padding: 2.5rem 0;
       }
       
       .kpi-highlight-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
       
       .kpi-highlight-subtitle {
         font-size: 1rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
       }
       
       .kpi-highlight-stats {
         gap: 2.5rem;
+        flex-direction: row;
+      }
+      
+      .kpi-highlight-number {
+        font-size: 3.5rem;
+      }
+      
+      .kpi-highlight-label {
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .kpi-highlight-section {
+        padding: 2rem 0;
+      }
+      
+      .kpi-highlight-title {
+        font-size: 1.9rem;
+      }
+      
+      .kpi-highlight-stats {
+        flex-direction: column;
+        gap: 2rem;
       }
       
       .kpi-highlight-number {
@@ -1314,33 +1346,10 @@
       }
       
       .kpi-highlight-label {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.8px;
       }
     }
-    
-    @media (max-width: 480px) {
-      .kpi-highlight-section {
-        padding: 1.5rem 0;
-      }
-      
-      .kpi-highlight-title {
-        font-size: 1.8rem;
-      }
-      
-      .kpi-highlight-stats {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-      
-      .kpi-highlight-number {
-        font-size: 2.8rem;
-      }
-      
-      .kpi-highlight-label {
-        font-size: 0.85rem;
-        letter-spacing: 0.5px;
-      }
-        }
     </style>
   <link rel="apple-touch-icon" sizes="180x180" href="src/assets/favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="src/assets/favicon_io/favicon-32x32.png">
