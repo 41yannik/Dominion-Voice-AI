@@ -1747,6 +1747,128 @@
         font-size: 1.8rem;
       }
         }
+    
+    /* Allgemeine Section-Abstände für bessere Trennung */
+    .section {
+      padding: 6rem 0; /* Mehr Padding für größere Abstände */
+      margin: 3rem 0; /* Zusätzlicher Margin zwischen Sektionen */
+    }
+    
+    .section h2 {
+      margin-bottom: 3rem; /* Mehr Abstand nach Hauptüberschriften */
+      margin-top: 0;
+    }
+    
+    /* Spezielle Anpassungen für einzelne Sektionen */
+    .why-act-section {
+      padding: 6rem 0 !important; /* Überschreibt bestehende 4rem */
+      margin: 4rem 0; /* Extra Abstand für diese wichtige Sektion */
+    }
+    
+    .kpi-highlight-section {
+      padding: 5rem 0 !important; /* Überschreibt bestehende 4rem */
+      margin: 4rem 0; /* Extra Abstand für KPI-Sektion */
+    }
+    
+    /* Hero-Sektion spezielle Behandlung */
+    .hero {
+      margin-bottom: 4rem; /* Großer Abstand nach Hero */
+    }
+    
+    /* Demo-Sektion */
+    #demo {
+      padding: 6rem 0;
+      margin: 4rem 0;
+    }
+    
+    /* Vorteile-Sektion */
+    #vorteile {
+      padding: 6rem 0;
+      margin: 4rem 0;
+    }
+    
+    /* Funktionen-Sektion */
+    #funktionen {
+      padding: 6rem 0;
+      margin: 4rem 0;
+    }
+    
+    /* Kontakt-Sektion */
+    #kontakt {
+      padding: 6rem 0;
+      margin: 4rem 0 0 0; /* Kein Margin-bottom für letzte Sektion */
+    }
+    
+    /* Mobile Anpassungen für Abstände */
+    @media (max-width: 768px) {
+      .section {
+        padding: 4rem 0;
+        margin: 2rem 0;
+      }
+      
+      .section h2 {
+        margin-bottom: 2rem;
+      }
+      
+      .why-act-section {
+        padding: 4rem 0 !important;
+        margin: 3rem 0;
+      }
+      
+      .kpi-highlight-section {
+        padding: 3rem 0 !important;
+        margin: 3rem 0;
+      }
+      
+      .hero {
+        margin-bottom: 3rem;
+      }
+      
+      #demo, #vorteile, #funktionen {
+        padding: 4rem 0;
+        margin: 3rem 0;
+      }
+      
+      #kontakt {
+        padding: 4rem 0;
+        margin: 3rem 0 0 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .section {
+        padding: 3rem 0;
+        margin: 1.5rem 0;
+      }
+      
+      .section h2 {
+        margin-bottom: 1.5rem;
+      }
+      
+      .why-act-section {
+        padding: 3rem 0 !important;
+        margin: 2rem 0;
+      }
+      
+      .kpi-highlight-section {
+        padding: 3rem 0 !important;
+        margin: 2rem 0;
+      }
+      
+      .hero {
+        margin-bottom: 2rem;
+      }
+      
+      #demo, #vorteile, #funktionen {
+        padding: 3rem 0;
+        margin: 2rem 0;
+      }
+      
+      #kontakt {
+        padding: 3rem 0;
+        margin: 2rem 0 0 0;
+      }
+        }
     </style>
   <link rel="apple-touch-icon" sizes="180x180" href="src/assets/favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="src/assets/favicon_io/favicon-32x32.png">
@@ -2139,8 +2261,8 @@
                                             <div class="dot chaotic" style="top: 80%; left: 45%;"></div>
                                         </div>
                                         <span class="side-label">Chaos</span>
-                                    </div>
-                                    
+            </div>
+        
                                     <!-- Transformation Pfeil -->
                                     <div class="transform-arrow">
                                         <div class="arrow-icon">→</div>
