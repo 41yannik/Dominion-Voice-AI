@@ -1319,14 +1319,14 @@
     .kpi-highlight-section {
       background: linear-gradient(90deg, 
         rgba(0, 0, 0, 1) 0%,
-        rgba(0, 100, 200, 0.3) 15%,
-        rgba(0, 191, 255, 0.6) 30%,
-        rgba(0, 220, 255, 0.8) 50%,
-        rgba(0, 191, 255, 0.6) 70%,
-        rgba(0, 100, 200, 0.3) 85%,
+        rgba(0, 100, 200, 0.2) 15%,
+        rgba(0, 191, 255, 0.4) 30%,
+        rgba(0, 220, 255, 0.5) 50%,
+        rgba(0, 191, 255, 0.4) 70%,
+        rgba(0, 100, 200, 0.2) 85%,
         rgba(0, 0, 0, 1) 100%
       );
-      padding: 4rem 0;
+      padding: 2.5rem 0;
       margin: 0;
       position: relative;
       overflow: hidden;
@@ -1341,13 +1341,13 @@
       bottom: 0;
       background: linear-gradient(45deg, 
         transparent 0%,
-        rgba(0, 191, 255, 0.1) 25%,
-        rgba(0, 255, 255, 0.15) 50%,
-        rgba(0, 191, 255, 0.1) 75%,
+        rgba(0, 191, 255, 0.05) 25%,
+        rgba(0, 255, 255, 0.08) 50%,
+        rgba(0, 191, 255, 0.05) 75%,
         transparent 100%
       );
       pointer-events: none;
-      animation: shimmer 3s ease-in-out infinite alternate;
+      animation: shimmer 4s ease-in-out infinite alternate;
     }
     
     .kpi-highlight-container {
@@ -1361,31 +1361,31 @@
     }
     
     .kpi-highlight-title {
-      font-size: 2.5rem;
-      font-weight: 800;
+      font-size: 3.2rem;
+      font-weight: 900;
       color: #ffffff;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.5rem;
       text-shadow: 
-        2px 2px 6px rgba(0, 0, 0, 0.6),
-        0 0 8px rgba(0, 191, 255, 0.2);
-      letter-spacing: -0.5px;
+        2px 2px 8px rgba(0, 0, 0, 0.7),
+        0 0 12px rgba(0, 191, 255, 0.3);
+      letter-spacing: -1px;
     }
     
     .kpi-highlight-subtitle {
-      font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 2.5rem;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 1.8rem;
       font-weight: 400;
       text-shadow: 
-        1px 1px 3px rgba(0, 0, 0, 0.4);
-      opacity: 0.9;
+        1px 1px 2px rgba(0, 0, 0, 0.3);
+      opacity: 0.8;
     }
     
     .kpi-highlight-stats {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 4rem;
+      gap: 3rem;
       flex-wrap: wrap;
     }
     
@@ -1395,39 +1395,36 @@
     }
     
     .kpi-highlight-number {
-      font-size: 4.5rem;
-      font-weight: 900;
+      font-size: 3.5rem;
+      font-weight: 700;
       color: #ffffff;
       line-height: 0.9;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.5rem;
       text-shadow: 
-        0 0 20px rgba(255, 255, 255, 0.8),
-        0 0 40px rgba(0, 191, 255, 0.6),
-        0 0 60px rgba(0, 191, 255, 0.4),
-        2px 2px 8px rgba(0, 0, 0, 0.8);
+        0 0 8px rgba(255, 255, 255, 0.4),
+        0 0 15px rgba(0, 191, 255, 0.3),
+        2px 2px 6px rgba(0, 0, 0, 0.7);
       display: block;
       transition: all 0.3s ease;
-      animation: pulse-zoom 2s ease-in-out infinite;
     }
     
     .kpi-highlight-number:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
       text-shadow: 
-        0 0 30px rgba(255, 255, 255, 1),
-        0 0 50px rgba(0, 191, 255, 0.8),
-        0 0 70px rgba(0, 191, 255, 0.6),
-        2px 2px 8px rgba(0, 0, 0, 0.8);
+        0 0 12px rgba(255, 255, 255, 0.6),
+        0 0 20px rgba(0, 191, 255, 0.4),
+        2px 2px 6px rgba(0, 0, 0, 0.8);
     }
     
     .kpi-highlight-label {
-      font-size: 0.95rem;
-      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.8);
       font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 1.2px;
+      letter-spacing: 1px;
       text-shadow: 
-        1px 1px 3px rgba(0, 0, 0, 0.5);
-      opacity: 0.85;
+        1px 1px 2px rgba(0, 0, 0, 0.4);
+      opacity: 0.75;
     }
     
     /* Smooth Transitions für KPI Items */
@@ -1440,14 +1437,6 @@
     }
     
     /* Keyframe Animationen */
-    @keyframes pulse-zoom {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-    }
     
     @keyframes shimmer {
       0% {
@@ -1461,30 +1450,29 @@
     /* Mobile Anpassungen für KPI Highlight */
     @media (max-width: 768px) {
       .kpi-highlight-section {
-        padding: 2.5rem 0;
+        padding: 2rem 0;
       }
       
       .kpi-highlight-title {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
       }
       
       .kpi-highlight-subtitle {
-        font-size: 1rem;
-        margin-bottom: 2rem;
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
       }
       
       .kpi-highlight-stats {
-        gap: 2.5rem;
+        gap: 2rem;
         flex-direction: row;
       }
       
       .kpi-highlight-number {
-        font-size: 3.5rem;
+        font-size: 2.8rem;
         text-shadow: 
-          0 0 15px rgba(255, 255, 255, 0.7),
-          0 0 30px rgba(0, 191, 255, 0.5),
-          0 0 45px rgba(0, 191, 255, 0.3),
-          2px 2px 6px rgba(0, 0, 0, 0.8);
+          0 0 6px rgba(255, 255, 255, 0.3),
+          0 0 12px rgba(0, 191, 255, 0.2),
+          2px 2px 4px rgba(0, 0, 0, 0.6);
       }
       
       .kpi-highlight-label {
@@ -1499,7 +1487,7 @@
       }
       
       .kpi-highlight-title {
-        font-size: 1.9rem;
+        font-size: 2.2rem;
       }
       
       .kpi-highlight-stats {
@@ -1508,12 +1496,11 @@
       }
       
       .kpi-highlight-number {
-        font-size: 3rem;
+        font-size: 2.5rem;
         text-shadow: 
-          0 0 12px rgba(255, 255, 255, 0.6),
-          0 0 25px rgba(0, 191, 255, 0.4),
-          0 0 35px rgba(0, 191, 255, 0.2),
-          2px 2px 6px rgba(0, 0, 0, 0.8);
+          0 0 5px rgba(255, 255, 255, 0.2),
+          0 0 10px rgba(0, 191, 255, 0.15),
+          2px 2px 4px rgba(0, 0, 0, 0.5);
       }
       
       .kpi-highlight-label {
@@ -1766,8 +1753,8 @@
     }
     
     .kpi-highlight-section {
-      padding: 5rem 0 !important; /* Überschreibt bestehende 4rem */
-      margin: 4rem 0; /* Extra Abstand für KPI-Sektion */
+      padding: 2.5rem 0 !important; /* Kleinere Sektion */
+      margin: 2rem 0; /* Weniger Abstand für nebensächlichere Darstellung */
     }
     
     /* Hero-Sektion spezielle Behandlung */
@@ -1816,8 +1803,8 @@
       }
       
       .kpi-highlight-section {
-        padding: 3rem 0 !important;
-        margin: 3rem 0;
+        padding: 2rem 0 !important;
+        margin: 1.5rem 0;
       }
       
       .hero {
@@ -1851,8 +1838,8 @@
       }
       
       .kpi-highlight-section {
-        padding: 3rem 0 !important;
-        margin: 2rem 0;
+        padding: 1.5rem 0 !important;
+        margin: 1rem 0;
       }
       
       .hero {
