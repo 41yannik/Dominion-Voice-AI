@@ -404,23 +404,14 @@
       }
     }
     
-    /* Vapi Widget Sichtbarkeit und Positionierung */
-    vapi-widget {
-      z-index: 99999 !important;
-      position: fixed !important;
-      bottom: 20px !important;
-      right: 20px !important;
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-    
-        /* Mobile Anpassungen für das Widget */
+    /* Voice Button - Mobile Anpassungen */
     @media (max-width: 768px) {
-      vapi-widget {
+      #vapi-floating-button {
+        width: 55px !important;
+        height: 55px !important;
         bottom: 15px !important;
         right: 15px !important;
-        scale: 0.95;
+        font-size: 20px !important;
       }
     }
     
@@ -2406,73 +2397,96 @@
 
     </script>
 
-<!-- Voice Widget Integration - Debug Version -->
-<div id="vapi-widget-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 99999; background: red; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">TEST</div>
-
-<vapi-widget
-  public-key="8bf7ee3a-30d7-48ca-9f24-64e1a2b6b133"
-  assistant-id="93a24c39-3507-4712-93dd-3a1e5a4a8bdf"
-  mode="voice"
-  theme="light"
-  base-bg-color="#ffffff"
-  accent-color="#06efef"
-  cta-button-color="#edf7f6"
-  cta-button-text-color="#000000"
-  border-radius="medium"
-  size="compact"
-  position="bottom-right"
-  title="TALK WITH AI VOICE AGENT"
-  start-button-text="Start"
-  end-button-text="End Call"
-  voice-show-transcript="false"
-  consent-required="true"
-  consent-title="Datenschutzhinweis"
-  consent-content="Mit Klick auf 'Zustimmen' erkläre ich mich einverstanden, dass diese Sprachinteraktion aufgezeichnet und gemäß der Datenschutzerklärung verarbeitet wird."
-  consent-storage-key="vapi_widget_consent"
-></vapi-widget>
+<!-- Vapi Voice Widget - Einfache Integration -->
+<div id="vapi-floating-button" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #00bfff, #0077ff);
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(0, 191, 255, 0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: all 0.3s ease;
+  border: none;
+  color: white;
+  font-size: 24px;
+" onclick="startVapiCall()">
+  🎤
+</div>
 
 <script>
-// Debug Script für Vapi Widget
-console.log('Vapi Widget Debug: Script wird geladen...');
-
-// Warte bis DOM geladen ist
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM geladen, suche nach Vapi Widget...');
-  
-  setTimeout(() => {
-    const vapiWidget = document.querySelector('vapi-widget');
-    const testElement = document.getElementById('vapi-widget-container');
-    
-    console.log('Vapi Widget Element gefunden:', vapiWidget);
-    console.log('Test Element sichtbar:', testElement && testElement.offsetParent !== null);
-    
-    if (vapiWidget) {
-      console.log('Vapi Widget Style:', window.getComputedStyle(vapiWidget));
-      console.log('Vapi Widget Position:', vapiWidget.getBoundingClientRect());
+// Einfache Vapi Integration ohne komplexes Widget
+async function startVapiCall() {
+  try {
+    // Lade Vapi SDK dynamisch
+    if (typeof window.Vapi === 'undefined') {
+      await loadVapiSDK();
     }
     
-    // Entferne Test-Element nach 5 Sekunden
-    setTimeout(() => {
-      if (testElement) {
-        testElement.remove();
-        console.log('Test-Element entfernt');
-      }
-    }, 5000);
-  }, 2000);
-});
+    const vapi = new window.Vapi('8bf7ee3a-30d7-48ca-9f24-64e1a2b6b133');
+    
+    // Starte Anruf mit dem Assistant
+    vapi.start('93a24c39-3507-4712-93dd-3a1e5a4a8bdf');
+    
+    // Button visuell ändern während Anruf
+    const button = document.getElementById('vapi-floating-button');
+    button.innerHTML = '📞';
+    button.style.background = 'linear-gradient(135deg, #ff4444, #cc0000)';
+    
+    // Anruf-Events
+    vapi.on('call-start', () => {
+      console.log('Anruf gestartet');
+      button.innerHTML = '🔴';
+    });
+    
+    vapi.on('call-end', () => {
+      console.log('Anruf beendet');
+      button.innerHTML = '🎤';
+      button.style.background = 'linear-gradient(135deg, #00bfff, #0077ff)';
+    });
+    
+  } catch (error) {
+    console.error('Fehler beim Starten des Vapi Calls:', error);
+    alert('Voice Agent konnte nicht gestartet werden. Bitte versuchen Sie es später erneut.');
+  }
+}
 
-// Überwache Widget-Ereignisse
-window.addEventListener('load', function() {
-  console.log('Fenster vollständig geladen');
+// Lade Vapi SDK
+function loadVapiSDK() {
+  return new Promise((resolve, reject) => {
+    if (document.querySelector('script[src*="vapi"]')) {
+      resolve();
+      return;
+    }
+    
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/@vapi-ai/web@latest/dist/index.js';
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
+
+// Hover-Effekt für Button
+document.addEventListener('DOMContentLoaded', function() {
+  const button = document.getElementById('vapi-floating-button');
   
-  // Überprüfe ob Vapi Script geladen wurde
-  setTimeout(() => {
-    console.log('Vapi verfügbar:', typeof window.Vapi !== 'undefined');
-    console.log('Vapi Widget Custom Element registriert:', customElements.get('vapi-widget'));
-  }, 3000);
+  button.addEventListener('mouseenter', function() {
+    this.style.transform = 'scale(1.1)';
+    this.style.boxShadow = '0 6px 25px rgba(0, 191, 255, 0.6)';
+  });
+  
+  button.addEventListener('mouseleave', function() {
+    this.style.transform = 'scale(1)';
+    this.style.boxShadow = '0 4px 20px rgba(0, 191, 255, 0.4)';
+  });
 });
-</script>
-
-<script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async type="text/javascript" onload="console.log('Vapi Script geladen')" onerror="console.error('Fehler beim Laden des Vapi Scripts')"></script>
+    </script>
 </body>
 </html>
