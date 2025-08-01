@@ -765,6 +765,145 @@
       font-weight: bold;
     }
     
+    /* Transformation Visual für "Mehr Umsatz, weniger Chaos" */
+    .transformation-visual {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      margin-bottom: 0.8rem;
+      height: 80px;
+    }
+    
+    .chaos-side, .structure-side {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      position: relative;
+    }
+    
+    .chaos-icon, .structure-icon {
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+    }
+    
+    .chaos-dots {
+      position: relative;
+      width: 60px;
+      height: 40px;
+      background: rgba(255, 100, 100, 0.1);
+      border-radius: 6px;
+      border: 1px solid rgba(255, 100, 100, 0.3);
+    }
+    
+    .dot.chaotic {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #ff6464;
+      border-radius: 50%;
+      animation: chaotic-movement 2s ease-in-out infinite;
+    }
+    
+    .structure-bars {
+      display: flex;
+      align-items: end;
+      gap: 3px;
+      height: 40px;
+      padding: 0.3rem;
+      background: rgba(100, 255, 100, 0.1);
+      border-radius: 6px;
+      border: 1px solid rgba(100, 255, 100, 0.3);
+    }
+    
+    .mini-bar {
+      width: 8px;
+      background: linear-gradient(to top, #64ff64, #32cd32);
+      border-radius: 2px 2px 0 0;
+      transition: height 2s ease-in-out;
+      animation: mini-grow 2s ease-in-out;
+    }
+    
+    .transform-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+      flex-shrink: 0;
+    }
+    
+    .arrow-icon {
+      font-size: 1.2rem;
+      color: #00bfff;
+      font-weight: bold;
+    }
+    
+    .ai-badge {
+      font-size: 0.8rem;
+      background: rgba(0, 191, 255, 0.2);
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 191, 255, 0.3);
+    }
+    
+    .side-label {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 500;
+    }
+    
+    .revenue-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      padding: 0.4rem;
+      background: rgba(0, 255, 136, 0.1);
+      border-radius: 6px;
+      border: 1px solid rgba(0, 255, 136, 0.3);
+    }
+    
+    .revenue-arrow {
+      font-size: 1rem;
+      color: #00ff88;
+      font-weight: bold;
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    .revenue-text {
+      font-size: 0.8rem;
+      color: #00ff88;
+      font-weight: 600;
+    }
+    
+    /* Animationen */
+    @keyframes chaotic-movement {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(2px, -2px); }
+      50% { transform: translate(-1px, 1px); }
+      75% { transform: translate(1px, -1px); }
+    }
+    
+    @keyframes mini-grow {
+      from { height: 0 !important; }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { 
+        text-shadow: 0 0 5px #00ff88;
+        transform: scale(1);
+      }
+      50% { 
+        text-shadow: 0 0 10px #00ff88, 0 0 15px #00ff88;
+        transform: scale(1.1);
+      }
+    }
+    
     .process-flow {
       display: flex;
       align-items: center;
@@ -1988,17 +2127,43 @@
                 </div>
                         <div class="benefit-visual">
                             <div class="revenue-visual">
-                                <div class="chart-container">
-                                    <div class="chart-bars">
-                                        <div class="chart-bar" style="height: 40%"></div>
-                                        <div class="chart-bar" style="height: 60%"></div>
-                                        <div class="chart-bar" style="height: 85%"></div>
-                                        <div class="chart-bar" style="height: 95%"></div>
-            </div>
-                                    <div class="chart-trend">
-                                        <div class="trend-line"></div>
-                                        <div class="trend-arrow">↗</div>
+                                <!-- Chaos zu Struktur Transformation -->
+                                <div class="transformation-visual">
+                                    <!-- Vorher: Chaos -->
+                                    <div class="chaos-side">
+                                        <div class="chaos-icon">⚡</div>
+                                        <div class="chaos-dots">
+                                            <div class="dot chaotic" style="top: 20%; left: 15%;"></div>
+                                            <div class="dot chaotic" style="top: 60%; left: 30%;"></div>
+                                            <div class="dot chaotic" style="top: 40%; left: 60%;"></div>
+                                            <div class="dot chaotic" style="top: 80%; left: 45%;"></div>
+                                        </div>
+                                        <span class="side-label">Chaos</span>
                                     </div>
+                                    
+                                    <!-- Transformation Pfeil -->
+                                    <div class="transform-arrow">
+                                        <div class="arrow-icon">→</div>
+                                        <div class="ai-badge">🤖</div>
+                                    </div>
+                                    
+                                    <!-- Nachher: Struktur -->
+                                    <div class="structure-side">
+                                        <div class="structure-icon">📊</div>
+                                        <div class="structure-bars">
+                                            <div class="mini-bar" style="height: 30%;"></div>
+                                            <div class="mini-bar" style="height: 50%;"></div>
+                                            <div class="mini-bar" style="height: 70%;"></div>
+                                            <div class="mini-bar" style="height: 90%;"></div>
+                                        </div>
+                                        <span class="side-label">Struktur</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Umsatz Indikator -->
+                                <div class="revenue-indicator">
+                                    <div class="revenue-arrow">↗</div>
+                                    <span class="revenue-text">+Umsatz</span>
                                 </div>
                             </div>
                         </div>
